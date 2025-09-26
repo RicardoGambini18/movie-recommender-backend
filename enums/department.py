@@ -1,0 +1,16 @@
+import enum
+
+
+class Department(enum.Enum):
+    DIRECTING = "DIRECTING"
+    WRITING = "WRITING"
+    PRODUCTION = "PRODUCTION"
+    EDITING = "EDITING"
+    ART = "ART"
+    SOUND = "SOUND"
+    VISUAL_EFFECTS = "VISUAL_EFFECTS"
+    CREW = "CREW"
+    LIGHTING = "LIGHTING"
+    CAMERA = "CAMERA"
+    COSTUME_AND_MAKE_UP = "COSTUME_AND_MAKE_UP"
+    ACTORS = "ACTORS"

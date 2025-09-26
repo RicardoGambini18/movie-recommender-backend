@@ -1,0 +1,23 @@
+from config.database import db
+from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, Text
+
+
+class Genre(db.Model):
+    __tablename__ = 'genres'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(Text, unique=True, nullable=False)
+    name_es = Column(Text, nullable=True)
+
+    movies = relationship("MovieGenre", back_populates="genre")
+
+    def __repr__(self):
+        return f'<Genre {self.id}: {self.name}>'
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'name_es': self.name_es
+        }

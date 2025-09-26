@@ -1,0 +1,10 @@
+import enum
+
+
+class MovieStatus(enum.Enum):
+    RELEASED = "RELEASED"
+    RUMORED = "RUMORED"
+    POST_PRODUCTION = "POST_PRODUCTION"
+    IN_PRODUCTION = "IN_PRODUCTION"
+    PLANNED = "PLANNED"
+    CANCELED = "CANCELED"
