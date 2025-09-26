@@ -6,6 +6,14 @@ load_dotenv()
 
 class Environment:
     @staticmethod
+    def FLASK_DEBUG():
+        return os.environ.get('FLASK_DEBUG', '0')
+
+    @staticmethod
+    def FLASK_RUN_PORT():
+        return int(os.environ.get('FLASK_RUN_PORT', 5000))
+
+    @staticmethod
     def FLASK_ENV():
         return os.environ.get('FLASK_ENV', 'development')
 
@@ -15,7 +23,3 @@ class Environment:
         if not database_url:
             raise ValueError('DATABASE_URL is not set')
         return database_url
-
-    @staticmethod
-    def PORT():
-        return int(os.environ.get('PORT', 8080))

@@ -12,10 +12,11 @@ setup_swagger(app)
 api_prefix = '/api'
 app.register_blueprint(users_bp, url_prefix=api_prefix)
 
-if __name__ == "__main__":
-    port = Environment.PORT()
-    is_prod = Environment.FLASK_ENV() == "production"
-    mode = "Producción" if is_prod else "Desarrollo"
+port = Environment.FLASK_RUN_PORT()
+is_prod = Environment.FLASK_ENV() == "production"
 
-    Logger.info(f"Iniciando servidor en modo {mode} en el puerto {port}")
-    app.run(debug=not is_prod, port=port, use_reloader=not is_prod)
+mode = "Producción" if is_prod else "Desarrollo"
+Logger.info(f"Iniciando servidor en modo {mode} en el puerto {port}")
+
+if __name__ == "__main__":
+    app.run(debug=not is_prod, port=port)
