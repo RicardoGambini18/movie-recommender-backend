@@ -11,7 +11,7 @@ class CastMember(db.Model):
     name = Column(Text, nullable=False)
     gender = Column(Enum(Gender), nullable=True)
     profile_path = Column(Text, nullable=True)
-    character = Column(Text, nullable=False)
+    character = Column(Text, nullable=True)
     character_es = Column(Text, nullable=True)
     order = Column(Integer, nullable=False)
 
@@ -30,3 +30,8 @@ class CastMember(db.Model):
             'character_es': self.character_es,
             'order': self.order
         }
+
+    @staticmethod
+    def bulk_insert(cast_members: list[dict]):
+        db.session.bulk_insert_mappings(CastMember, cast_members)
+        db.session.commit()

@@ -21,3 +21,8 @@ class Keyword(db.Model):
             'name': self.name,
             'name_es': self.name_es
         }
+
+    @staticmethod
+    def bulk_insert(keywords: list[dict]):
+        db.session.bulk_insert_mappings(Keyword, keywords)
+        db.session.commit()

@@ -1,6 +1,6 @@
 from models import User
-from config import Logger
 from flasgger import swag_from
+from config.logging import Logger
 from flask import Blueprint, jsonify
 
 users_bp = Blueprint('users', __name__)

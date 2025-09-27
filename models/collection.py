@@ -25,3 +25,8 @@ class Collection(db.Model):
             'poster_path': self.poster_path,
             'backdrop_path': self.backdrop_path
         }
+
+    @staticmethod
+    def bulk_insert(collections: list[dict]):
+        db.session.bulk_insert_mappings(Collection, collections)
+        db.session.commit()

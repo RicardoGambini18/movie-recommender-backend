@@ -19,3 +19,8 @@ class Company(db.Model):
             'id': self.id,
             'name': self.name
         }
+
+    @staticmethod
+    def bulk_insert(companies: list[dict]):
+        db.session.bulk_insert_mappings(Company, companies)
+        db.session.commit()

@@ -22,3 +22,8 @@ class MovieCastMember(db.Model):
             'movie_id': self.movie_id,
             'cast_member_id': self.cast_member_id
         }
+
+    @staticmethod
+    def bulk_insert(movie_cast_members: list[dict]):
+        db.session.bulk_insert_mappings(MovieCastMember, movie_cast_members)
+        db.session.commit()

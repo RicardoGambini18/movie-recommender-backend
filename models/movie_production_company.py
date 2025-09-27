@@ -22,3 +22,9 @@ class MovieProductionCompany(db.Model):
             'movie_id': self.movie_id,
             'company_id': self.company_id
         }
+
+    @staticmethod
+    def bulk_insert(movie_production_companies: list[dict]):
+        db.session.bulk_insert_mappings(
+            MovieProductionCompany, movie_production_companies)
+        db.session.commit()

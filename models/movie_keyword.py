@@ -22,3 +22,8 @@ class MovieKeyword(db.Model):
             'movie_id': self.movie_id,
             'keyword_id': self.keyword_id
         }
+
+    @staticmethod
+    def bulk_insert(movie_keywords: list[dict]):
+        db.session.bulk_insert_mappings(MovieKeyword, movie_keywords)
+        db.session.commit()
