@@ -19,10 +19,13 @@ api_prefix = '/api'
 app.register_blueprint(users_bp, url_prefix=api_prefix)
 
 port = Environment.FLASK_RUN_PORT()
+debug = Environment.FLASK_DEBUG() == "1"
 is_prod = Environment.FLASK_ENV() == "production"
 
 mode = "Producción" if is_prod else "Desarrollo"
-Logger.info(f"Iniciando servidor en modo {mode} en el puerto {port}")
+debug_state = "Activado" if debug else "Desactivado"
+Logger.info(
+    f"Iniciando servidor en modo {mode} (Debug: {debug_state}) en el puerto {port}")
 
 if __name__ == "__main__":
     app.run(debug=not is_prod, port=port)
