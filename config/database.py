@@ -1,4 +1,3 @@
-from models import *
 from flask import Flask
 from flask_migrate import Migrate
 from config.logging import Logger

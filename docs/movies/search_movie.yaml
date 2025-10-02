@@ -1,0 +1,75 @@
+tags:
+  - Películas
+parameters:
+  - name: movie_id
+    in: query
+    type: integer
+    required: true
+    description: Identificador único de la película
+  - name: algorithm_key
+    in: query
+    type: string
+    required: true
+    description: Clave única del algoritmo
+  - name: data_structure_key
+    in: query
+    type: string
+    required: true
+    description: Clave única de la estructura de datos
+responses:
+  200:
+    description: Resultado de la búsqueda de la película
+    schema:
+      type: object
+      properties:
+        movie:
+          $ref: '#/definitions/SearchResult'
+  400:
+    description: Parámetros inválidos
+    schema:
+      $ref: '#/definitions/Error'
+  404:
+    description: Película no encontrada
+    schema:
+      $ref: '#/definitions/Error'
+  500:
+    description: Error interno del servidor
+    schema:
+      $ref: '#/definitions/Error'
+definitions:
+  SearchResult:
+    type: object
+    properties:
+      data_structure:
+        type: string
+        description: Nombre de la estructura de datos
+      algorithm:
+        type: string
+        description: Nombre del algoritmo
+      item_count:
+        type: integer
+        description: Cantidad de elementos en la estructura de datos
+      item_found:
+        type: object
+        description: Elemento encontrado
+      metrics:
+        $ref: '#/definitions/AlgorithmMetrics'
+  AlgorithmMetrics:
+    type: object
+    properties:
+      time:
+        type: integer
+        description: Tiempo de ejecución en nanosegundos
+      memory:
+        type: integer
+        description: Memoria utilizada en bytes
+      comparisons:
+        type: integer
+        description: Cantidad de comparaciones realizadas
+  Error:
+    type: object
+    properties:
+      error:
+        type: string
+        required: true
+        description: Mensaje de error
