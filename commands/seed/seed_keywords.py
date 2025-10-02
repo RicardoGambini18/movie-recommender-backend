@@ -1,8 +1,7 @@
 import csv
-from utils import BatchProcessor
 from config.logging import Logger
 from models import Keyword, MovieKeyword
-from commands.seed.utils import is_row_valid, validate_and_convert_int, validate_and_convert_list
+from commands.seed.utils import is_row_valid, validate_and_convert_int, validate_and_convert_list, process_batch
 
 
 def seed_keywords(movies_mapping: dict):
@@ -70,9 +69,9 @@ def seed_keywords(movies_mapping: dict):
             f"Ingresando lote {batch_number} ({batch_size} relaciones entre películas y palabras clave) a la base de datos")
         MovieKeyword.bulk_insert(movie_keywords)
 
-    BatchProcessor.process(
+    process_batch(
         list(keywords_mapping.values()), insert_keyword_batch)
-    BatchProcessor.process(
+    process_batch(
         list(movie_keywords_mapping.values()), insert_movie_keyword_batch)
 
     Logger.success(

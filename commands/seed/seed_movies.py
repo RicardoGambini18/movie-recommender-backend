@@ -1,8 +1,7 @@
 import csv
-from utils import BatchProcessor
 from config.logging import Logger
 from models import Language, Collection, Movie, Genre, MovieGenre, Company, MovieProductionCompany, Country, MovieProductionCountry
-from commands.seed.utils import is_row_valid, validate_and_convert_int, validate_and_convert_dict, validate_and_convert_list, validate_and_convert_boolean, validate_and_convert_movie_status, validate_and_convert_date
+from commands.seed.utils import is_row_valid, validate_and_convert_int, validate_and_convert_dict, validate_and_convert_list, validate_and_convert_boolean, validate_and_convert_movie_status, validate_and_convert_date, process_batch
 
 
 def seed_movies(links_mapping: dict, ratings_mapping: dict):
@@ -258,7 +257,7 @@ def seed_movies(links_mapping: dict, ratings_mapping: dict):
             f"Ingresando lote {batch_number} ({batch_size} películas) a la base de datos")
         Movie.bulk_insert(movies)
 
-    BatchProcessor.process(list(movies_mapping.values()), insert_movie_batch)
+    process_batch(list(movies_mapping.values()), insert_movie_batch)
 
     Logger.success("Películas ingresadas a la base de datos correctamente")
     if skipped_movies > 0:

@@ -1,8 +1,7 @@
 import csv
-from utils import BatchProcessor
 from config.logging import Logger
 from models import CastMember, CrewMember, MovieCastMember, MovieCrewMember
-from commands.seed.utils import is_row_valid, validate_and_convert_int, validate_and_convert_list, validate_and_convert_gender, validate_and_convert_department
+from commands.seed.utils import is_row_valid, validate_and_convert_int, validate_and_convert_list, validate_and_convert_gender, validate_and_convert_department, process_batch
 
 
 def seed_credits(movies_mapping: dict):
@@ -119,9 +118,9 @@ def seed_credits(movies_mapping: dict):
             f"Ingresando lote {batch_number} ({batch_size} relaciones entre películas y miembros de reparto) a la base de datos")
         MovieCastMember.bulk_insert(movie_cast_members)
 
-    BatchProcessor.process(
+    process_batch(
         list(cast_members_mapping.values()), insert_cast_member_batch)
-    BatchProcessor.process(
+    process_batch(
         list(movie_cast_members_mapping.values()), insert_movie_cast_member_batch)
 
     Logger.success(
@@ -143,9 +142,9 @@ def seed_credits(movies_mapping: dict):
             f"Ingresando lote {batch_number} ({batch_size} relaciones entre películas y miembros del equipo) a la base de datos")
         MovieCrewMember.bulk_insert(movie_crew_members)
 
-    BatchProcessor.process(
+    process_batch(
         list(crew_members_mapping.values()), insert_crew_member_batch)
-    BatchProcessor.process(
+    process_batch(
         list(movie_crew_members_mapping.values()), insert_movie_crew_member_batch)
 
     Logger.success(

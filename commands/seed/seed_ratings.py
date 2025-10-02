@@ -2,9 +2,8 @@ import csv
 from faker import Faker
 from datetime import datetime
 from models import User, Rating
-from utils import BatchProcessor
 from config.logging import Logger
-from commands.seed.utils import is_row_valid, validate_and_convert_int, validate_and_convert_float, get_email, get_image_url
+from commands.seed.utils import is_row_valid, validate_and_convert_int, validate_and_convert_float, get_email, get_image_url, process_batch
 
 
 faker = Faker('es_ES')
@@ -84,7 +83,7 @@ def seed_ratings(movies_mapping: dict):
             f"Ingresando lote {batch_number} ({batch_size} ratings) a la base de datos")
         Rating.bulk_insert(ratings)
 
-    BatchProcessor.process(list(ratings_mapping.values()), insert_rating_batch)
+    process_batch(list(ratings_mapping.values()), insert_rating_batch)
 
     Logger.success(
         f"Ratings ingresados a la base de datos correctamente")

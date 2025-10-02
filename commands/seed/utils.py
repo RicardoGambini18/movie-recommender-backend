@@ -162,3 +162,11 @@ def get_image_url(width=400, height=400, grayscale=False, blur=0):
 
     param_string = f"/?{'&'.join(params)}" if len(params) > 0 else ""
     return f"{base_url}/{width}/{height}{param_string}"
+
+
+def process_batch(items: list[dict], callback: callable, batch_size: int = 300):
+    for i in range(0, len(items), batch_size):
+        batch = items[i:i + batch_size]
+        batch_number = i // batch_size + 1
+        current_batch_size = len(batch)
+        callback(batch, batch_number, current_batch_size)
