@@ -20,10 +20,7 @@ responses:
   200:
     description: Resultado de la búsqueda de la película
     schema:
-      type: object
-      properties:
-        movie:
-          $ref: '#/definitions/SearchResult'
+      $ref: '#/definitions/SearchResult'
   400:
     description: Parámetros inválidos
     schema:
@@ -71,5 +68,4 @@ definitions:
     properties:
       error:
         type: string
-        required: true
         description: Mensaje de error

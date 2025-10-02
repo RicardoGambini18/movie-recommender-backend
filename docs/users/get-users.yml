@@ -1,40 +1,39 @@
 tags:
   - Usuarios
+responses:
+  200:
+    description: Lista de usuarios
+    schema:
+      $ref: '#/definitions/Users'
+  500:
+    description: Error interno del servidor
+    schema:
+      $ref: '#/definitions/Error'
 definitions:
+  Users:
+    type: array
+    items:
+      $ref: '#/definitions/User'
   User:
     type: object
     properties:
       id:
         type: integer
-        required: true
         description: Identificador único del usuario
       name:
         type: string
-        required: true
         description: Nombre del usuario
       email:
         type: string
-        required: true
         description: Email del usuario
       image:
         type: string
-        required: false
-        description: Imagen del usuario (opcional)
-responses:
-  200:
-    description: Lista de usuarios
-    schema:
-      type: array
-      required: true
-      items:
-        $ref: '#/definitions/User'
-  500:
-    description: Error interno del servidor
-    schema:
-      type: object
-      required: true
-      properties:
-        error:
-          type: string
-          required: true
-          description: Mensaje de error
+        description: Imagen del usuario
+  Error:
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: string
+        description: Mensaje de error
