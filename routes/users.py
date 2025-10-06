@@ -17,3 +17,19 @@ def get_users():
         error_message = f"Error al obtener usuarios: {e}"
         Logger.error(error_message)
         return jsonify({"error": error_message}), 500
+
+
+@swag_from('../docs/users/get-user-by-id.yml')
+@users_bp.route('/users/<int:user_id>', methods=['GET'])
+def get_user_by_id(user_id):
+    try:
+        user = User.query.get(user_id)
+
+        if user is None:
+            return jsonify({"error": "Usuario no encontrado"}), 404
+
+        return jsonify(user.to_dict())
+    except Exception as e:
+        error_message = f"Error al obtener usuario: {e}"
+        Logger.error(error_message)
+        return jsonify({"error": error_message}), 500
