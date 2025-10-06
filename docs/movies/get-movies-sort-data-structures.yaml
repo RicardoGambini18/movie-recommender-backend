@@ -40,12 +40,21 @@ definitions:
       name:
         type: string
         description: Nombre del algoritmo
-      complexity:
-        type: string
-        description: Complejidad del algoritmo en notación Big O
       description:
         type: string
         description: Descripción del algoritmo
+      space_complexity:
+        type: string
+        description: Complejidad espacial del algoritmo en notación Big O
+      best_time_complexity:
+        type: string
+        description: Complejidad temporal del algoritmo en notación Big O en el mejor caso
+      worst_time_complexity:
+        type: string
+        description: Complejidad temporal del algoritmo en notación Big O en el peor caso
+      average_time_complexity:
+        type: string
+        description: Complejidad temporal del algoritmo en notación Big O en el caso promedio
   Error:
     type: object
     properties:
