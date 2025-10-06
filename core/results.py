@@ -3,9 +3,18 @@ from core.algorithm_metrics import AlgorithmMetrics
 
 
 @dataclass
-class SearchResult:
+class AlgorithmResult:
     data_structure: str
     algorithm: str
     item_count: int
-    item_found: dict | None
     metrics: AlgorithmMetrics
+
+
+@dataclass
+class SortResult(AlgorithmResult):
+    sorted_data: list[dict]
+
+
+@dataclass
+class SearchResult(AlgorithmResult):
+    item_found: dict | None

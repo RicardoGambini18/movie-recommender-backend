@@ -1,0 +1,54 @@
+tags:
+  - Películas
+responses:
+  200:
+    description: Registro de estructuras de datos y algoritmos disponibles para el ordenamiento de películas
+    schema:
+      $ref: '#/definitions/DataStructures'
+  500:
+    description: Error interno del servidor
+    schema:
+      $ref: '#/definitions/Error'
+definitions:
+  DataStructures:
+    type: array
+    items:
+      $ref: '#/definitions/DataStructure'
+  DataStructure:
+    type: object
+    properties:
+      key:
+        type: string
+        description: Clave única de la estructura de datos
+      name:
+        type: string
+        description: Nombre de la estructura de datos
+      description:
+        type: string
+        description: Descripción de la estructura de datos
+      algorithms:
+        type: array
+        description: Algoritmos disponibles para la estructura de datos
+        items:
+          $ref: '#/definitions/Algorithm'
+  Algorithm:
+    type: object
+    properties:
+      key:
+        type: string
+        description: Clave única del algoritmo
+      name:
+        type: string
+        description: Nombre del algoritmo
+      complexity:
+        type: string
+        description: Complejidad del algoritmo en notación Big O
+      description:
+        type: string
+        description: Descripción del algoritmo
+  Error:
+    type: object
+    properties:
+      error:
+        type: string
+        description: Mensaje de error

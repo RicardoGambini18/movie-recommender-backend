@@ -7,8 +7,16 @@ from abc import ABC, abstractmethod
 class AlgorithmOption():
     key: str
     name: str
-    complexity: str
     description: str
+    space_complexity: str
+    best_time_complexity: str
+    worst_time_complexity: str
+    average_time_complexity: str
+
+
+@dataclass
+class SearchAlgorithmOption(AlgorithmOption):
+    needs_sort: bool
 
 
 @dataclass

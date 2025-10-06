@@ -2,6 +2,7 @@ import gc
 import time
 import tracemalloc
 from dataclasses import dataclass
+from core.constants import WARMUP_ITERATIONS
 
 
 @dataclass
@@ -19,6 +20,10 @@ class AlgorithmMetricsManager:
     _end_memory: int = 0
     _original_gc_enabled: bool = False
 
+    def warmup(self):
+        for i in range(WARMUP_ITERATIONS):
+            sum(range(i))
+
     def increment_comparisons(self):
         self._comparisons += 1
 
@@ -32,6 +37,7 @@ class AlgorithmMetricsManager:
 
     def start(self):
         self.reset()
+        self.warmup()
 
         self._original_gc_enabled = gc.isenabled()
         gc.collect()
