@@ -18,9 +18,9 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             description=INFO['ONE_DIMENSIONAL_ARRAY']['description'],
             algorithms=[
                 SearchAlgorithmOption(
-                    needs_sort=False,
                     key=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['key'],
                     name=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['name'],
+                    needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
                     description=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['description'],
                     space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['space_complexity'],
                     best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
@@ -31,9 +31,9 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                         'search_algorithms']['LINEAR_SEARCH']['average_time_complexity'],
                 ),
                 SearchAlgorithmOption(
-                    needs_sort=True,
                     key=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['key'],
                     name=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['name'],
+                    needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
                     description=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['description'],
                     space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['space_complexity'],
                     best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
@@ -44,9 +44,9 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                         'search_algorithms']['BINARY_SEARCH']['average_time_complexity'],
                 ),
                 SearchAlgorithmOption(
-                    needs_sort=True,
                     key=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['key'],
                     name=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['name'],
+                    needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                     description=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['description'],
                     space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['space_complexity'],
                     best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
@@ -57,9 +57,9 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                         'search_algorithms']['JUMP_SEARCH']['average_time_complexity'],
                 ),
                 SearchAlgorithmOption(
-                    needs_sort=True,
                     key=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['key'],
                     name=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['name'],
+                    needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
                     description=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['description'],
                     space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['space_complexity'],
                     best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
@@ -70,9 +70,9 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                         'search_algorithms']['EXPONENTIAL_SEARCH']['average_time_complexity'],
                 ),
                 SearchAlgorithmOption(
-                    needs_sort=True,
                     key=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['key'],
                     name=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['name'],
+                    needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
                     description=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['description'],
                     space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['space_complexity'],
                     best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
@@ -98,6 +98,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                 return SearchResult(
                     data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
                     algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['name'],
+                    needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
                     item_count=len(self.data),
                     item_found=item,
                     metrics=metrics_manager.get_metrics()
@@ -108,6 +109,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
         return SearchResult(
             data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
             algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['name'],
+            needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
             item_count=len(self.data),
             item_found=None,
             metrics=metrics_manager.get_metrics()
@@ -132,6 +134,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                 return SearchResult(
                     data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
                     algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['name'],
+                    needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
                     item_count=len(self.data),
                     item_found=item,
                     metrics=metrics_manager.get_metrics()
@@ -146,6 +149,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
         return SearchResult(
             data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
             algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['name'],
+            needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
             item_count=len(self.data),
             item_found=None,
             metrics=metrics_manager.get_metrics()
@@ -163,6 +167,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             return SearchResult(
                 data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
                 algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['name'],
+                needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                 item_count=len(self.data),
                 item_found=None,
                 metrics=metrics_manager.get_metrics()
@@ -195,6 +200,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             return SearchResult(
                 data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
                 algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['name'],
+                needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                 item_count=len(self.data),
                 item_found=None,
                 metrics=metrics_manager.get_metrics()
@@ -211,6 +217,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                 return SearchResult(
                     data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
                     algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['name'],
+                    needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                     item_count=len(self.data),
                     item_found=item,
                     metrics=metrics_manager.get_metrics()
@@ -221,6 +228,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
         return SearchResult(
             data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
             algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['name'],
+            needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
             item_count=len(self.data),
             item_found=None,
             metrics=metrics_manager.get_metrics()
@@ -238,6 +246,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             return SearchResult(
                 data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
                 algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['name'],
+                needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
                 item_count=0,
                 item_found=None,
                 metrics=metrics_manager.get_metrics()
@@ -253,6 +262,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             return SearchResult(
                 data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
                 algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['name'],
+                needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
                 item_count=len(self.data),
                 item_found=first_item,
                 metrics=metrics_manager.get_metrics()
@@ -281,6 +291,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
         return SearchResult(
             data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
             algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['name'],
+            needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
             item_count=len(self.data),
             item_found=found_item,
             metrics=metrics_manager.get_metrics()
@@ -316,6 +327,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             return SearchResult(
                 data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
                 algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['name'],
+                needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
                 item_count=0,
                 item_found=None,
                 metrics=metrics_manager.get_metrics()
@@ -329,6 +341,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
         return SearchResult(
             data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
             algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['name'],
+            needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
             item_count=len(self.data),
             item_found=found_item,
             metrics=metrics_manager.get_metrics()

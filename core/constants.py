@@ -57,6 +57,7 @@ INFO = {
             'LINEAR_SEARCH': {
                 'key': 'linear_search',
                 'name': 'Búsqueda lineal (Linear search)',
+                'needs_sort': False,
                 'description': 'Explora secuencialmente los elementos comparando con el objetivo hasta hallarlo o agotar el arreglo. No requiere orden previo y funciona con cualquier tipo de dato comparable.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(n)',
@@ -66,6 +67,7 @@ INFO = {
             'BINARY_SEARCH': {
                 'key': 'binary_search',
                 'name': 'Búsqueda binaria (Binary search, versión iterativa)',
+                'needs_sort': True,
                 'description': 'Opera sobre un arreglo ordenado. En cada paso examina el elemento central y descarta la mitad que no puede contener el objetivo, repitiendo hasta encontrarlo o vaciar el rango. La versión iterativa evita costo de pila adicional.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(\log n)',
@@ -75,6 +77,7 @@ INFO = {
             'JUMP_SEARCH': {
                 'key': 'jump_search',
                 'name': 'Búsqueda por saltos (Jump search)',
+                'needs_sort': True,
                 'description': 'Requiere arreglo ordenado. Avanza en bloques de tamaño aproximadamente raíz de n hasta sobrepasar el posible rango del objetivo y después realiza una búsqueda lineal dentro del bloque identificado.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(\sqrt{n})',
@@ -84,6 +87,7 @@ INFO = {
             'EXPONENTIAL_SEARCH': {
                 'key': 'exponential_search',
                 'name': 'Búsqueda exponencial (Exponential search)',
+                'needs_sort': True,
                 'description': 'Requiere arreglo ordenado. Amplía exponencialmente el índice de búsqueda para acotar rápidamente un intervalo candidato y luego ejecuta búsqueda binaria dentro de ese intervalo.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(\log n)',
@@ -93,6 +97,7 @@ INFO = {
             'INTERPOLATION_SEARCH': {
                 'key': 'interpolation_search',
                 'name': 'Búsqueda por interpolación (Interpolation search)',
+                'needs_sort': True,
                 'description': 'Requiere arreglo ordenado por una clave numérica aproximadamente uniforme. Estima la posición del objetivo mediante interpolación lineal y refina iterativamente. En distribuciones muy sesgadas su desempeño puede degradarse significativamente.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(\log\log n)',

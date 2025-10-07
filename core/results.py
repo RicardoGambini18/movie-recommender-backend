@@ -17,4 +17,5 @@ class SortResult(AlgorithmResult):
 
 @dataclass
 class SearchResult(AlgorithmResult):
+    needs_sort: bool
     item_found: dict | None
