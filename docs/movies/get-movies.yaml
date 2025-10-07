@@ -1,73 +1,19 @@
 tags:
   - Películas
-parameters:
-  - name: algorithm_key
-    in: query
-    type: string
-    required: true
-    description: Clave única del algoritmo
-  - name: data_structure_key
-    in: query
-    type: string
-    required: true
-    description: Clave única de la estructura de datos
 responses:
   200:
-    description: Resultado de la búsqueda de la película
+    description: Lista de películas
     schema:
-      $ref: '#/definitions/SortResult'
-  400:
-    description: Parámetros inválidos
-    schema:
-      $ref: '#/definitions/Error'
-  404:
-    description: Película no encontrada
-    schema:
-      $ref: '#/definitions/Error'
+      $ref: '#/definitions/Movies'
   500:
     description: Error interno del servidor
     schema:
       $ref: '#/definitions/Error'
 definitions:
-  SortResult:
-    type: object
-    properties:
-      data_structure:
-        type: string
-        description: Nombre de la estructura de datos
-      algorithm:
-        type: string
-        description: Nombre del algoritmo
-      item_count:
-        type: integer
-        description: Cantidad de elementos en la estructura de datos
-      sorted_data:
-        $ref: '#/definitions/SortedData'
-      metrics:
-        $ref: '#/definitions/AlgorithmMetrics'
-  SortedData:
+  Movies:
     type: array
-    description: Datos ordenados
     items:
       $ref: '#/definitions/Movie'
-  AlgorithmMetrics:
-    type: object
-    properties:
-      time:
-        type: integer
-        description: Tiempo de ejecución en nanosegundos
-      memory:
-        type: integer
-        description: Memoria utilizada en bytes
-      comparisons:
-        type: integer
-        description: Cantidad de comparaciones realizadas
-  Error:
-    type: object
-    properties:
-      error:
-        type: string
-        description: Mensaje de error
   Movie:
     type: object
     properties:
@@ -128,3 +74,9 @@ definitions:
       collection_id:
         type: integer
         description: Identificador único de la colección de la película
+  Error:
+    type: object
+    properties:
+      error:
+        type: string
+        description: Mensaje de error

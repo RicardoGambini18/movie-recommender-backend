@@ -31,8 +31,6 @@ definitions:
         description: Imagen del usuario
   Error:
     type: object
-    required:
-      - error
     properties:
       error:
         type: string

@@ -47,8 +47,7 @@ definitions:
         type: integer
         description: Cantidad de elementos en la estructura de datos
       item_found:
-        type: object
-        description: Elemento encontrado
+        $ref: '#/definitions/Movie'
       metrics:
         $ref: '#/definitions/AlgorithmMetrics'
   AlgorithmMetrics:
@@ -69,3 +68,63 @@ definitions:
       error:
         type: string
         description: Mensaje de error
+  Movie:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Identificador único de la película
+      status:
+        type: string
+        description: Estado de la película
+      budget:
+        type: integer
+        description: Presupuesto de la película
+      revenue:
+        type: integer
+        description: Recaudación de la película
+      homepage:
+        type: string
+        description: Página web de la película
+      tmdb_id:
+        type: integer
+        description: Identificador único de la película en TMDB
+      imdb_id:
+        type: integer
+        description: Identificador único de la película en IMDB
+      title:
+        type: string
+        description: Título de la película
+      title_es:
+        type: string
+        description: Título de la película en español
+      overview:
+        type: string
+        description: Resumen de la película
+      overview_es:
+        type: string
+        description: Resumen de la película en español
+      poster_path:
+        type: string
+        description: Ruta de la imagen de la película
+      release_date:
+        type: string
+        description: Fecha de estreno de la película
+      tagline:
+        type: string
+        description: Slogan de la película
+      tagline_es:
+        type: string
+        description: Slogan de la película en español
+      vote_average:
+        type: float
+        description: Puntuación promedio de la película
+      vote_count:
+        type: integer
+        description: Cantidad de votos de la película
+      original_language_id:
+        type: integer
+        description: Identificador único del idioma original de la película
+      collection_id:
+        type: integer
+        description: Identificador único de la colección de la película

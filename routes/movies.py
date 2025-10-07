@@ -10,6 +10,7 @@ from core.one_dimensional_array_search_algorithm_registry import OneDimensionalA
 
 movies_bp = Blueprint('movies', __name__)
 
+
 sort_registry_manager = DataStructureAlgorithmRegistryManager(
     registries=[OneDimensionalArraySortAlgorithmRegistry]
 )
@@ -99,5 +100,18 @@ def search_movie():
         return jsonify(algorithm_method(movie_id))
     except Exception as e:
         error_message = f"Error al buscar la película: {e}"
+        Logger.error(error_message)
+        return jsonify({"error": error_message}), 500
+
+
+@swag_from('../docs/movies/get-movies.yaml')
+@movies_bp.route('/movies', methods=['GET'])
+def get_movies():
+    try:
+        movies = Movie.query.order_by(Movie.id).all()
+        movies_data = [movie.to_dict() for movie in movies]
+        return jsonify(movies_data)
+    except Exception as e:
+        error_message = f"Error al obtener películas: {e}"
         Logger.error(error_message)
         return jsonify({"error": error_message}), 500
