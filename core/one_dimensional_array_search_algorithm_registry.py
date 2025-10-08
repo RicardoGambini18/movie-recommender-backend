@@ -89,7 +89,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        for item in self.data:
+        for index, item in enumerate(self.data):
             metrics_manager.increment_comparisons()
 
             if self.value_getter(item) == value:
@@ -101,6 +101,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                     needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
                     item_count=len(self.data),
                     item_found=item,
+                    item_found_index=index,
                     metrics=metrics_manager.get_metrics()
                 )
 
@@ -112,6 +113,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
             item_count=len(self.data),
             item_found=None,
+            item_found_index=None,
             metrics=metrics_manager.get_metrics()
         )
 
@@ -137,6 +139,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                     needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
                     item_count=len(self.data),
                     item_found=item,
+                    item_found_index=mid,
                     metrics=metrics_manager.get_metrics()
                 )
             elif item_value < value:
@@ -152,6 +155,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
             item_count=len(self.data),
             item_found=None,
+            item_found_index=None,
             metrics=metrics_manager.get_metrics()
         )
 
@@ -170,6 +174,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                 needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                 item_count=len(self.data),
                 item_found=None,
+                item_found_index=None,
                 metrics=metrics_manager.get_metrics()
             )
 
@@ -203,6 +208,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                 needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                 item_count=len(self.data),
                 item_found=None,
+                item_found_index=None,
                 metrics=metrics_manager.get_metrics()
             )
 
@@ -220,6 +226,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                     needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                     item_count=len(self.data),
                     item_found=item,
+                    item_found_index=i,
                     metrics=metrics_manager.get_metrics()
                 )
 
@@ -231,6 +238,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
             item_count=len(self.data),
             item_found=None,
+            item_found_index=None,
             metrics=metrics_manager.get_metrics()
         )
 
@@ -249,6 +257,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                 needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
                 item_count=0,
                 item_found=None,
+                item_found_index=None,
                 metrics=metrics_manager.get_metrics()
             )
 
@@ -265,6 +274,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                 needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
                 item_count=len(self.data),
                 item_found=first_item,
+                item_found_index=0,
                 metrics=metrics_manager.get_metrics()
             )
 
@@ -283,7 +293,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
         left = i // 2
         right = min(i, n - 1)
 
-        found_item = self.recursive_binary_search(
+        found_result = self.recursive_binary_search(
             self.data, left, right, value, metrics_manager)
 
         metrics_manager.end()
@@ -293,7 +303,8 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['name'],
             needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
             item_count=len(self.data),
-            item_found=found_item,
+            item_found=found_result['item'] if found_result else None,
+            item_found_index=found_result['index'] if found_result else None,
             metrics=metrics_manager.get_metrics()
         )
 
@@ -306,7 +317,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             metrics_manager.increment_comparisons()
 
             if mid_value == value:
-                return mid_item
+                return {'item': mid_item, 'index': mid}
 
             if mid_value > value:
                 return self.recursive_binary_search(data, left, mid - 1, value, metrics_manager)
@@ -330,10 +341,11 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                 needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
                 item_count=0,
                 item_found=None,
+                item_found_index=None,
                 metrics=metrics_manager.get_metrics()
             )
 
-        found_item = self.recursive_interpolation_search(
+        found_result = self.recursive_interpolation_search(
             self.data, 0, n - 1, value, metrics_manager)
 
         metrics_manager.end()
@@ -343,7 +355,8 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['name'],
             needs_sort=INFO['ONE_DIMENSIONAL_ARRAY']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
             item_count=len(self.data),
-            item_found=found_item,
+            item_found=found_result['item'] if found_result else None,
+            item_found_index=found_result['index'] if found_result else None,
             metrics=metrics_manager.get_metrics()
         )
 
@@ -367,7 +380,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
                     metrics_manager.increment_comparisons()
 
                     if item_value == value:
-                        return item
+                        return {'item': item, 'index': i}
 
                 return None
 
@@ -382,7 +395,7 @@ class OneDimensionalArraySearchAlgorithmRegistry(DataStructureAlgorithmRegistry)
             metrics_manager.increment_comparisons()
 
             if pos_value == value:
-                return pos_item
+                return {'item': pos_item, 'index': pos}
 
             if pos_value < value:
                 return self.recursive_interpolation_search(data, pos + 1, right, value, metrics_manager)

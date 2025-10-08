@@ -48,6 +48,9 @@ definitions:
         description: Cantidad de elementos en la estructura de datos
       item_found:
         $ref: '#/definitions/Movie'
+      item_found_index:
+        type: integer
+        description: Índice de la película encontrada
       metrics:
         $ref: '#/definitions/AlgorithmMetrics'
   AlgorithmMetrics:

@@ -84,16 +84,22 @@ class OneDimensionalArraySortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         n = len(sorted_data)
 
         for i in range(n):
+            is_sorted = True
+
             for j in range(n - i - 1):
                 a = sorted_data[j]
                 b = sorted_data[j + 1]
                 a_value = self.value_getter(a)
                 b_value = self.value_getter(b)
 
+                metrics_manager.increment_comparisons()
+
                 if a_value > b_value:
                     sorted_data[j], sorted_data[j + 1] = b, a
+                    is_sorted = False
 
-                metrics_manager.increment_comparisons()
+            if is_sorted:
+                break
 
         metrics_manager.end()
 
