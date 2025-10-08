@@ -29,3 +29,8 @@ Comandos:
     - Formatea los datos de los archivos csv de The Movies Dataset y los ingresa a la base de datos.
       Este comando eliminato todos los datos existentes de la base de datos antes de ingresar los de los CSV.
       Ejecutar este comando solo si se tiene los csv de The Movies Dataset
+
+- flask data:update
+    - Accede a la API de TMDB para actualizar la data de las películas y en caso de ser la primera vez, agregará
+      campos de texto en español. Para usar este comando se necesita una API key válida de TMDB en la variable
+      de entorno TMDB_API_KEY

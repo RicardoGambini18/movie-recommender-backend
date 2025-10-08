@@ -21,5 +21,10 @@ class Environment:
     def DATABASE_URL():
         database_url = os.environ.get('DATABASE_URL')
         if not database_url:
-            raise ValueError('DATABASE_URL is not set')
+            raise ValueError(
+                'La variable de entorno DATABASE_URL no está seteada')
         return database_url
+
+    @staticmethod
+    def TMDB_API_KEY():
+        return os.environ.get('TMDB_API_KEY')
