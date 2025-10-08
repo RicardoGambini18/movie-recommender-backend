@@ -28,3 +28,11 @@ class Environment:
     @staticmethod
     def TMDB_API_KEY():
         return os.environ.get('TMDB_API_KEY')
+
+    @staticmethod
+    def WARMUP_ITERATIONS():
+        return int(os.environ.get('WARMUP_ITERATIONS', 1000))
+
+    @staticmethod
+    def MOVIES_SORT_LIMIT():
+        return int(os.environ.get('MOVIES_SORT_LIMIT', 4000))

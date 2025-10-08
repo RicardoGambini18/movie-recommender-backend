@@ -1,5 +1,7 @@
-MOVIES_SORT_LIMIT = 10000
-WARMUP_ITERATIONS = 25000
+from config.environment import Environment
+
+MOVIES_SORT_LIMIT = Environment.MOVIES_SORT_LIMIT()
+WARMUP_ITERATIONS = Environment.WARMUP_ITERATIONS()
 
 INFO = {
     'ONE_DIMENSIONAL_ARRAY': {
