@@ -4,10 +4,10 @@ MOVIES_SORT_LIMIT = Environment.MOVIES_SORT_LIMIT()
 WARMUP_ITERATIONS = Environment.WARMUP_ITERATIONS()
 
 INFO = {
-    'ONE_DIMENSIONAL_ARRAY': {
-        'key': 'one_dimensional_array',
-        'name': 'Arreglo unidimensional (Array 1D)',
-        'description': 'Estructura lineal donde los elementos se almacenan de forma contigua en memoria y se accede a ellos mediante un índice entero. Ofrece acceso aleatorio en tiempo constante y favorece recorridos secuenciales eficientes. Su tamaño suele ser fijo o costoso de cambiar, y las inserciones o eliminaciones en posiciones intermedias implican desplazamientos de elementos.',
+    'VECTOR': {
+        'key': 'vector',
+        'name': 'Vector',
+        'description': 'Estructura de datos lineal donde los elementos se almacenan de forma contigua en memoria y se accede a ellos mediante un índice entero. Ofrece acceso aleatorio en tiempo constante y favorece recorridos secuenciales eficientes. Su tamaño suele ser fijo o costoso de cambiar, y las inserciones o eliminaciones en posiciones intermedias implican desplazamientos de elementos.',
         'sort_algorithms': {
             'BUBBLE_SORT': {
                 'key': 'bubble_sort',

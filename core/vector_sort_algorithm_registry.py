@@ -5,72 +5,72 @@ from core.algorithm_metrics import AlgorithmMetricsManager
 from core.data_structure_algorithm_registry import AlgorithmOption, DataStructureOption,  DataStructureAlgorithmRegistry
 
 
-class OneDimensionalArraySortAlgorithmRegistry(DataStructureAlgorithmRegistry):
+class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
     def __init__(self, data: list[dict] = [], value_getter: Callable[[dict], int] = lambda: 0):
         self.data = data
         self.value_getter = value_getter
 
     def register(self):
         return DataStructureOption(
-            key=INFO['ONE_DIMENSIONAL_ARRAY']['key'],
-            name=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
-            description=INFO['ONE_DIMENSIONAL_ARRAY']['description'],
+            key=INFO['VECTOR']['key'],
+            name=INFO['VECTOR']['name'],
+            description=INFO['VECTOR']['description'],
             algorithms=[
                 AlgorithmOption(
-                    key=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['BUBBLE_SORT']['key'],
-                    name=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['BUBBLE_SORT']['name'],
-                    description=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['BUBBLE_SORT']['description'],
-                    space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['BUBBLE_SORT']['space_complexity'],
-                    best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['BUBBLE_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    key=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['key'],
+                    name=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['name'],
+                    description=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['description'],
+                    space_complexity=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['space_complexity'],
+                    best_time_complexity=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['best_time_complexity'],
+                    worst_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['BUBBLE_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    average_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['BUBBLE_SORT']['average_time_complexity'],
                 ),
                 AlgorithmOption(
-                    key=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['SELECTION_SORT']['key'],
-                    name=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['SELECTION_SORT']['name'],
-                    description=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['SELECTION_SORT']['description'],
-                    space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['SELECTION_SORT']['space_complexity'],
-                    best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    key=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['key'],
+                    name=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['name'],
+                    description=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['description'],
+                    space_complexity=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['space_complexity'],
+                    best_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['SELECTION_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    worst_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['SELECTION_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    average_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['SELECTION_SORT']['average_time_complexity'],
                 ),
                 AlgorithmOption(
-                    key=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['INSERTION_SORT']['key'],
-                    name=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['INSERTION_SORT']['name'],
-                    description=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['INSERTION_SORT']['description'],
-                    space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['INSERTION_SORT']['space_complexity'],
-                    best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    key=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['key'],
+                    name=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['name'],
+                    description=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['description'],
+                    space_complexity=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['space_complexity'],
+                    best_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['INSERTION_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    worst_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['INSERTION_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    average_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['INSERTION_SORT']['average_time_complexity'],
                 ),
                 AlgorithmOption(
-                    key=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['MERGE_SORT']['key'],
-                    name=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['MERGE_SORT']['name'],
-                    description=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['MERGE_SORT']['description'],
-                    space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['MERGE_SORT']['space_complexity'],
-                    best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['MERGE_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    key=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['key'],
+                    name=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['name'],
+                    description=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['description'],
+                    space_complexity=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['space_complexity'],
+                    best_time_complexity=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['best_time_complexity'],
+                    worst_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['MERGE_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    average_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['MERGE_SORT']['average_time_complexity'],
                 ),
                 AlgorithmOption(
-                    key=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['QUICK_SORT']['key'],
-                    name=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['QUICK_SORT']['name'],
-                    description=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['QUICK_SORT']['description'],
-                    space_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['QUICK_SORT']['space_complexity'],
-                    best_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['QUICK_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    key=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['key'],
+                    name=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['name'],
+                    description=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['description'],
+                    space_complexity=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['space_complexity'],
+                    best_time_complexity=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['best_time_complexity'],
+                    worst_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['QUICK_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['ONE_DIMENSIONAL_ARRAY'][
+                    average_time_complexity=INFO['VECTOR'][
                         'sort_algorithms']['QUICK_SORT']['average_time_complexity'],
                 ),
             ]
@@ -104,8 +104,8 @@ class OneDimensionalArraySortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.end()
 
         return SortResult(
-            data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
-            algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['BUBBLE_SORT']['name'],
+            data_structure=INFO['VECTOR']['name'],
+            algorithm=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['name'],
             item_count=len(self.data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()
@@ -136,8 +136,8 @@ class OneDimensionalArraySortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.end()
 
         return SortResult(
-            data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
-            algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['SELECTION_SORT']['name'],
+            data_structure=INFO['VECTOR']['name'],
+            algorithm=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['name'],
             item_count=len(self.data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()
@@ -172,8 +172,8 @@ class OneDimensionalArraySortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.end()
 
         return SortResult(
-            data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
-            algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['INSERTION_SORT']['name'],
+            data_structure=INFO['VECTOR']['name'],
+            algorithm=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['name'],
             item_count=len(self.data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()
@@ -189,8 +189,8 @@ class OneDimensionalArraySortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.end()
 
         return SortResult(
-            data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
-            algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['MERGE_SORT']['name'],
+            data_structure=INFO['VECTOR']['name'],
+            algorithm=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['name'],
             item_count=len(self.data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()
@@ -245,8 +245,8 @@ class OneDimensionalArraySortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.end()
 
         return SortResult(
-            data_structure=INFO['ONE_DIMENSIONAL_ARRAY']['name'],
-            algorithm=INFO['ONE_DIMENSIONAL_ARRAY']['sort_algorithms']['QUICK_SORT']['name'],
+            data_structure=INFO['VECTOR']['name'],
+            algorithm=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['name'],
             item_count=len(self.data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()

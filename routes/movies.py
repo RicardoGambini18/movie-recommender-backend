@@ -4,19 +4,19 @@ from flasgger import swag_from
 from config.logging import Logger
 from flask import Blueprint, jsonify
 from core.constants import MOVIES_SORT_LIMIT
+from core.vector_sort_algorithm_registry import VectorSortAlgorithmRegistry
+from core.vector_search_algorithm_registry import VectorSearchAlgorithmRegistry
 from core.data_structure_algorithm_registry import DataStructureAlgorithmRegistryManager
-from core.one_dimensional_array_sort_algorithm_registry import OneDimensionalArraySortAlgorithmRegistry
-from core.one_dimensional_array_search_algorithm_registry import OneDimensionalArraySearchAlgorithmRegistry
 
 movies_bp = Blueprint('movies', __name__)
 
 
 sort_registry_manager = DataStructureAlgorithmRegistryManager(
-    registries=[OneDimensionalArraySortAlgorithmRegistry]
+    registries=[VectorSortAlgorithmRegistry]
 )
 
 search_registry_manager = DataStructureAlgorithmRegistryManager(
-    registries=[OneDimensionalArraySearchAlgorithmRegistry]
+    registries=[VectorSearchAlgorithmRegistry]
 )
 
 

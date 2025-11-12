@@ -192,7 +192,7 @@ Una vez que la aplicación esté ejecutándose, puedes acceder a la documentaci�
      - Hacer clic en "Try it out"
      - Ingresar parámetros:
        - `algorithm_key`: `bubble_sort` (o cualquier algoritmo disponible)
-       - `data_structure_key`: `one_dimensional_array`
+       - `data_structure_key`: `vector`
      - Hacer clic en "Execute"
      - Verás el resultado con métricas de rendimiento
 
@@ -207,7 +207,7 @@ Una vez que la aplicación esté ejecutándose, puedes acceder a la documentaci�
      - Ingresar parámetros:
        - `movie_id`: `1` (ID de película a buscar)
        - `algorithm_key`: `linear_search` (o cualquier algoritmo disponible)
-       - `data_structure_key`: `one_dimensional_array`
+       - `data_structure_key`: `vector`
      - Hacer clic en "Execute"
 
 4. **Ver Datos:**
