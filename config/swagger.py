@@ -9,8 +9,8 @@ template = {
     "consumes": ["application/json"],
     "info": {
         "version": "1.0",
-        "title": "API Recomendador de Películas",
-        "description": "API del proyecto final del curso Estadística y Estructuras de Datos",
+        "title": "Algolab API",
+        "description": "Algolab es un laboratorio interactivo de algoritmos y estructuras de datos que permite experimentar con distintas implementaciones, comparar su rendimiento y visualizar su comportamiento en tiempo real, incluyendo comparadores de algoritmos de búsqueda y ordenamiento.",
     },
 }
 

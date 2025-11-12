@@ -1,6 +1,12 @@
-# Sistema Recomendador de Películas - Backend API
+# Algolab - Backend API
 
-Sistema web que implementa algoritmos de ordenamiento y búsqueda sobre un dataset de películas para demostrar conceptos de algoritmos y estructuras de datos.
+Algolab es un laboratorio interactivo de algoritmos y estructuras de datos que permite experimentar con distintas implementaciones, comparar su rendimiento y visualizar su comportamiento en tiempo real, incluyendo comparadores de algoritmos de búsqueda y ordenamiento.
+
+> **⚠️ Nota Importante:** El proceso de configuración local puede resultar complejo. Si no se necesita ejecutar la aplicación localmente, se puede utilizar las versiones desplegadas:
+>
+> - **Backend API:** Disponible en **https://algolab-backend.vercel.app/apidocs**
+> - **Frontend:** Interfaz web optimizada y fácil de usar que consume esta API. Aunque no es parte directa de este proyecto, se desarrolló con la finalidad de facilitar el uso de la aplicación. Disponible en **https://algolab-frontend.vercel.app**
+>   - **Nota de acceso:** Al ingresar, se requiere un proceso de login donde se debe seleccionar un usuario cualquiera y colocar la contraseña: **33396** (sección del curso).
 
 ## 📋 Requerimientos del Sistema
 
@@ -12,7 +18,7 @@ Sistema web que implementa algoritmos de ordenamiento y búsqueda sobre un datas
 ### 1. Extraer el Proyecto
 Extraer el archivo ZIP del proyecto y navegar a la carpeta:
 ```bash
-cd movie-recommender-backend
+cd algolab-backend
 ```
 
 ### 2. Crear Entorno Virtual
@@ -43,7 +49,7 @@ Crear archivo `.env` en la raíz del proyecto con las siguientes variables:
 
 ```env
 # Base de datos (REQUERIDA)
-DATABASE_URL=postgresql://usuario:password@localhost:5432/movie_recommender
+DATABASE_URL=postgresql://usuario:password@localhost:5432/algolab
 
 # Configuración de Flask (opcionales)
 FLASK_ENV=development
@@ -71,8 +77,8 @@ La API Key de TMDB es necesaria solo para el comando `flask data:update`. Para o
    - Ir a: https://www.themoviedb.org/settings/api
    - Hacer clic en "Request an API Key"
    - Seleccionar "Developer" como tipo de uso
-   - Completar el formulario con:
-     - **Application Name**: Movie Recommender Backend
+   - Completar el formulario. Además de los campos personales requeridos, completar los siguientes campos relacionados con la aplicación:
+     - **Application Name**: Algolab Backend
      - **Application Summary**: Proyecto académico para curso de algoritmos y estructuras de datos
      - **Application URL**: http://localhost:8080 (o tu URL de desarrollo)
 
@@ -86,7 +92,7 @@ La API Key de TMDB es necesaria solo para el comando `flask data:update`. Para o
 
 **Crear base de datos en PostgreSQL:**
 ```sql
-CREATE DATABASE movie_recommender;
+CREATE DATABASE algolab;
 ```
 
 **Aplicar migraciones:**
