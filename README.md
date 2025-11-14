@@ -2,6 +2,19 @@
 
 Algolab es un laboratorio interactivo de algoritmos y estructuras de datos que permite experimentar con distintas implementaciones, comparar su rendimiento y visualizar su comportamiento en tiempo real, incluyendo comparadores de algoritmos de búsqueda y ordenamiento.
 
+## 🎯 Configuración Local Automática
+
+Para facilitar la ejecución del proyecto, se ha implementado una **configuración automática simplificada** que elimina la necesidad de realizar pasos manuales de instalación y configuración.
+
+Se ha creado un script de inicialización automática (`app.py`) que realiza todas las tareas de configuración de forma transparente. Simplemente ejecute el archivo `app.py` y el script se encargará automáticamente de:
+
+1. **Crear y activar el entorno virtual** (si no existe) en la carpeta `.venv/`
+2. **Instalar todas las dependencias** necesarias desde `requirements.txt`
+3. **Iniciar el servidor Flask**
+4. **Abrir la aplicación en el navegador** automáticamente una vez que el servidor esté listo
+
+**Nota:** La primera ejecución puede tardar unos minutos mientras se crea el entorno virtual e instalan las dependencias. Las ejecuciones posteriores serán más rápidas ya que reutilizará el entorno virtual existente. El archivo `.env` proporcionado incluye configuración de base de datos en la nube, por lo que no es necesario configurar PostgreSQL localmente.
+
 > **⚠️ Nota Importante:** El proceso de configuración local puede resultar complejo. Si no se necesita ejecutar la aplicación localmente, se puede utilizar las versiones desplegadas:
 >
 > - **Backend API:** Disponible en **https://algolab-backend.vercel.app/apidocs**
