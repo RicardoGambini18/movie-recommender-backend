@@ -1,10 +1,16 @@
 tags:
   - Películas
+security:
+  - Bearer: []
 responses:
   200:
     description: Registro de estructuras de datos y algoritmos disponibles para el ordenamiento de películas
     schema:
       $ref: '#/definitions/DataStructures'
+  401:
+    description: Token de autenticación inválido o faltante
+    schema:
+      $ref: '#/definitions/Error'
   500:
     description: Error interno del servidor
     schema:

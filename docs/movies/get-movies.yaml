@@ -1,10 +1,16 @@
 tags:
   - Películas
+security:
+  - Bearer: []
 responses:
   200:
     description: Lista de películas
     schema:
       $ref: '#/definitions/Movies'
+  401:
+    description: Token de autenticación inválido o faltante
+    schema:
+      $ref: '#/definitions/Error'
   500:
     description: Error interno del servidor
     schema:

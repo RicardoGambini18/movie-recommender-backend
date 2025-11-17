@@ -36,3 +36,19 @@ class Environment:
     @staticmethod
     def MOVIES_SORT_LIMIT():
         return int(os.environ.get('MOVIES_SORT_LIMIT', 4000))
+
+    @staticmethod
+    def AUTH_PASSWORD():
+        auth_password = os.environ.get('AUTH_PASSWORD')
+        if not auth_password:
+            raise ValueError(
+                'La variable de entorno AUTH_PASSWORD no está seteada')
+        return auth_password
+
+    @staticmethod
+    def AUTH_SECRET():
+        auth_secret = os.environ.get('AUTH_SECRET')
+        if not auth_secret:
+            raise ValueError(
+                'La variable de entorno AUTH_SECRET no está seteada')
+        return auth_secret

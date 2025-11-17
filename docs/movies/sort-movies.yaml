@@ -1,5 +1,7 @@
 tags:
   - Películas
+security:
+  - Bearer: []
 parameters:
   - name: algorithm_key
     in: query
@@ -18,6 +20,10 @@ responses:
       $ref: '#/definitions/SortResult'
   400:
     description: Parámetros inválidos
+    schema:
+      $ref: '#/definitions/Error'
+  401:
+    description: Token de autenticación inválido o faltante
     schema:
       $ref: '#/definitions/Error'
   404:

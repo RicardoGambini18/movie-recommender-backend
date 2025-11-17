@@ -1,0 +1,51 @@
+tags:
+  - Usuarios
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/LoginRequest'
+responses:
+  200:
+    description: Inicio de sesión exitoso
+    schema:
+      $ref: '#/definitions/LoginResponse'
+  400:
+    description: Credenciales inválidas
+    schema:
+      $ref: '#/definitions/Error'
+  404:
+    description: Usuario no encontrado
+    schema:
+      $ref: '#/definitions/Error'
+  500:
+    description: Error interno del servidor
+    schema:
+      $ref: '#/definitions/Error'
+definitions:
+  LoginRequest:
+    type: object
+    required:
+      - user_id
+      - password
+    properties:
+      user_id:
+        type: integer
+        description: Identificador único del usuario
+      password:
+        type: string
+        description: Contraseña
+  LoginResponse:
+    type: object
+    properties:
+      token:
+        type: string
+        description: Token JWT con datos del usuario y expiración de 30 días
+  Error:
+    type: object
+    properties:
+      error:
+        type: string
+        description: Mensaje de error
+

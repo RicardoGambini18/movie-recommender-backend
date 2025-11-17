@@ -12,6 +12,14 @@ template = {
         "title": "Algolab API",
         "description": "Algolab es un laboratorio interactivo de algoritmos y estructuras de datos que permite experimentar con distintas implementaciones, comparar su rendimiento y visualizar su comportamiento en tiempo real, incluyendo comparadores de algoritmos de búsqueda y ordenamiento.",
     },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token de autenticación (JWT). Formato: Bearer <token>"
+        }
+    },
 }
 
 

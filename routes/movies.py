@@ -3,6 +3,7 @@ from flask import request
 from flasgger import swag_from
 from config.logging import Logger
 from flask import Blueprint, jsonify
+from middlewares import auth_middleware
 from core.constants import MOVIES_SORT_LIMIT
 from core.vector_sort_algorithm_registry import VectorSortAlgorithmRegistry
 from core.vector_search_algorithm_registry import VectorSearchAlgorithmRegistry
@@ -22,6 +23,7 @@ search_registry_manager = DataStructureAlgorithmRegistryManager(
 
 @swag_from('../docs/movies/get-movies-sort-data-structures.yaml')
 @movies_bp.route('/movies/sort/data-structures', methods=['GET'])
+@auth_middleware
 def get_movies_sort_data_structures():
     try:
         return jsonify(sort_registry_manager.get_options())
@@ -33,6 +35,7 @@ def get_movies_sort_data_structures():
 
 @swag_from('../docs/movies/sort-movies.yaml')
 @movies_bp.route('/movies/sort', methods=['GET'])
+@auth_middleware
 def sort_movies():
     try:
         algorithm_key = request.args.get('algorithm_key')
@@ -64,6 +67,7 @@ def sort_movies():
 
 @swag_from('../docs/movies/get-movies-search-data-structures.yaml')
 @movies_bp.route('/movies/search/data-structures', methods=['GET'])
+@auth_middleware
 def get_movies_search_data_structures():
     try:
         return jsonify(search_registry_manager.get_options())
@@ -75,6 +79,7 @@ def get_movies_search_data_structures():
 
 @swag_from('../docs/movies/search-movie.yaml')
 @movies_bp.route('/movies/search', methods=['GET'])
+@auth_middleware
 def search_movie():
     try:
         movie_id = int(request.args.get('movie_id'))
@@ -106,6 +111,7 @@ def search_movie():
 
 @swag_from('../docs/movies/get-movies.yaml')
 @movies_bp.route('/movies', methods=['GET'])
+@auth_middleware
 def get_movies():
     try:
         movies = Movie.query.order_by(Movie.id).all()
