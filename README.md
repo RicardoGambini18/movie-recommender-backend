@@ -11,15 +11,13 @@ Se ha creado un script de inicialización automática (`app.py`) que realiza tod
 1. **Crear y activar el entorno virtual** (si no existe) en la carpeta `.venv/`
 2. **Instalar todas las dependencias** necesarias desde `requirements.txt`
 3. **Iniciar el servidor Flask**
-4. **Abrir la aplicación en el navegador** automáticamente una vez que el servidor esté listo
+4. **Abrir la aplicación en el navegador** automáticamente una vez que el servidor esté listo, cargando la interfaz web de la carpeta `frontend/` para que se pueda utilizar la aplicación completa de forma local sin pasos adicionales
+
+Al abrir la interfaz local, se debe seleccionar cualquier usuario disponible e ingresar la sección del curso (**33396**) como contraseña para iniciar sesión y comenzar a probar la aplicación.
 
 **Nota:** La primera ejecución puede tardar unos minutos mientras se crea el entorno virtual e instalan las dependencias. Las ejecuciones posteriores serán más rápidas ya que reutilizará el entorno virtual existente. El archivo `.env` proporcionado incluye configuración de base de datos en la nube, por lo que no es necesario configurar PostgreSQL localmente.
 
-> **⚠️ Nota Importante:** El proceso de configuración local puede resultar complejo. Si no se necesita ejecutar la aplicación localmente, se puede utilizar las versiones desplegadas:
->
-> - **Backend API:** Disponible en **https://algolab-backend.vercel.app/apidocs**
-> - **Frontend:** Interfaz web optimizada y fácil de usar que consume esta API. Aunque no es parte directa de este proyecto, se desarrolló con la finalidad de facilitar el uso de la aplicación. Disponible en **https://algolab-frontend.vercel.app**
->   - **Nota de acceso:** Al ingresar, se requiere un proceso de login donde se debe seleccionar un usuario cualquiera y colocar la contraseña: **33396** (sección del curso).
+> **⚠️ Nota Importante:** Si no se necesita ejecutar la aplicación localmente, se puede utilizar la versión desplegada en **https://algolab-utp.vercel.app**.
 
 ## 📋 Requerimientos del Sistema
 

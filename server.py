@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from pathlib import Path
 from flask_cors import CORS
 from config.logging import Logger
 from config.database import setup_db
@@ -7,6 +7,7 @@ from routes import users_bp, movies_bp
 from config.swagger import setup_swagger
 from config.environment import Environment
 from config.commands import register_commands
+from flask import Flask, send_from_directory, abort
 
 # Se necesita importar todos los modelos para que flask-migrate los registre
 from models import *
@@ -22,6 +23,26 @@ register_commands(app)
 api_prefix = '/api'
 app.register_blueprint(users_bp, url_prefix=api_prefix)
 app.register_blueprint(movies_bp, url_prefix=api_prefix)
+
+frontend_path = Path(__file__).parent / "frontend"
+frontend_index = frontend_path / "index.html"
+serve_frontend = frontend_index.exists()
+
+if serve_frontend:
+    Logger.info("Archivos estáticos del frontend habilitados")
+    frontend_directory = str(frontend_path)
+
+    @app.route('/', defaults={'path': ''})
+    @app.route('/<path:path>')
+    def serve_frontend_app(path):
+        if path.startswith('api/'):
+            abort(404)
+
+        requested_file = frontend_path / path
+        if path and requested_file.is_file():
+            return send_from_directory(frontend_directory, path)
+
+        return send_from_directory(frontend_directory, 'index.html')
 
 port = Environment.FLASK_RUN_PORT()
 debug = Environment.FLASK_DEBUG() == "1"
