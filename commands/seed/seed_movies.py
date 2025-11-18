@@ -132,7 +132,7 @@ def seed_movies(links_mapping: dict, ratings_mapping: dict):
                     'name': genre['name'],
                 }
 
-                movie_genre_record_id = f'{link['movie_id']}-{genre_id}'
+                movie_genre_record_id = f"{link['movie_id']}-{genre_id}"
 
                 movie_genres_mapping[movie_genre_record_id] = {
                     'genre_id': genre_id,
@@ -159,7 +159,7 @@ def seed_movies(links_mapping: dict, ratings_mapping: dict):
                     'name': company['name'],
                 }
 
-                movie_production_company_record_id = f'{link['movie_id']}-{company_id}'
+                movie_production_company_record_id = f"{link['movie_id']}-{company_id}"
 
                 movie_production_companies_mapping[movie_production_company_record_id] = {
                     'company_id': company_id,
@@ -187,7 +187,7 @@ def seed_movies(links_mapping: dict, ratings_mapping: dict):
                     'iso31661': country['iso_3166_1'],
                 }
 
-                movie_production_country_record_id = f'{link['movie_id']}-{country_id}'
+                movie_production_country_record_id = f"{link['movie_id']}-{country_id}"
 
                 movie_production_countries_mapping[movie_production_country_record_id] = {
                     'country_id': country_id,

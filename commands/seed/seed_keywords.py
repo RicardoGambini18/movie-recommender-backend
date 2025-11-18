@@ -49,7 +49,7 @@ def seed_keywords(movies_mapping: dict):
                     'name_es': None,
                 }
 
-                movie_keyword_id = f'{movie['id']}-{keyword_id}'
+                movie_keyword_id = f"{movie['id']}-{keyword_id}"
 
                 movie_keywords_mapping[movie_keyword_id] = {
                     'movie_id': movie['id'],

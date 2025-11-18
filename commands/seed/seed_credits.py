@@ -62,7 +62,7 @@ def seed_credits(movies_mapping: dict):
                     'order': cast_member_order,
                 }
 
-                movie_cast_member_id = f'{movie['id']}-{cast_member_id}'
+                movie_cast_member_id = f"{movie['id']}-{cast_member_id}"
 
                 movie_cast_members_mapping[movie_cast_member_id] = {
                     'movie_id': movie['id'],
@@ -98,7 +98,7 @@ def seed_credits(movies_mapping: dict):
                     'job_es': None,
                 }
 
-                movie_crew_member_id = f'{movie['id']}-{crew_member_id}'
+                movie_crew_member_id = f"{movie['id']}-{crew_member_id}"
 
                 movie_crew_members_mapping[movie_crew_member_id] = {
                     'movie_id': movie['id'],
