@@ -1,7 +1,7 @@
 from models import Movie
 from flask import request
 from flasgger import swag_from
-from config.logging import Logger
+from config.logger import Logger
 from flask import Blueprint, jsonify
 from middlewares import auth_middleware
 from core.constants import MOVIES_SORT_LIMIT

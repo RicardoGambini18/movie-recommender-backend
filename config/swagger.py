@@ -1,5 +1,5 @@
 from flasgger import Swagger
-from config.logging import Logger
+from config.logger import Logger
 
 
 template = {

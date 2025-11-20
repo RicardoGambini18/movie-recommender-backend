@@ -1,24 +1,18 @@
 import os
 from pathlib import Path
 from flask_cors import CORS
-from config.logging import Logger
+from config.logger import Logger
 from config.database import setup_db
 from routes import users_bp, movies_bp
 from config.swagger import setup_swagger
 from config.environment import Environment
-from config.commands import register_commands
 from flask import Flask, send_from_directory, abort
 
-# Se necesita importar todos los modelos para que flask-migrate los registre
-from models import *
-
 app = Flask(__name__)
-
 
 CORS(app)
 setup_db(app)
 setup_swagger(app)
-register_commands(app)
 
 api_prefix = '/api'
 app.register_blueprint(users_bp, url_prefix=api_prefix)

@@ -5,7 +5,7 @@ import threading
 import webbrowser
 import subprocess
 from pathlib import Path
-from config.logging import Logger
+from config.logger import Logger
 
 script_dir = Path(__file__).parent.absolute()
 

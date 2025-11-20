@@ -1,6 +1,6 @@
 import jwt
 from functools import wraps
-from config.logging import Logger
+from config.logger import Logger
 from flask import request, jsonify
 from config.environment import Environment
 

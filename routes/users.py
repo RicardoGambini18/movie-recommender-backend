@@ -1,7 +1,7 @@
 import jwt
 from models import User
 from flasgger import swag_from
-from config.logging import Logger
+from config.logger import Logger
 from config.environment import Environment
 from flask import Blueprint, jsonify, request
 from datetime import datetime, timedelta, timezone
