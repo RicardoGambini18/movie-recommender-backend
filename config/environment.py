@@ -18,11 +18,11 @@ class Environment:
         return os.environ.get('FLASK_ENV', 'development')
 
     @staticmethod
-    def DATABASE_URL():
-        database_url = os.environ.get('DATABASE_URL')
+    def DATABASE_URI():
+        database_url = os.environ.get('DATABASE_URI')
         if not database_url:
             raise ValueError(
-                'La variable de entorno DATABASE_URL no está seteada')
+                'La variable de entorno DATABASE_URI no está seteada')
         return database_url
 
     @staticmethod
@@ -52,3 +52,11 @@ class Environment:
             raise ValueError(
                 'La variable de entorno AUTH_SECRET no está seteada')
         return auth_secret
+
+    @staticmethod
+    def SQLITE_DB_GOOGLE_DRIVE_ID():
+        return os.environ.get('SQLITE_DB_GOOGLE_DRIVE_ID')
+
+    @staticmethod
+    def FRONTEND_ZIP_GOOGLE_DRIVE_ID():
+        return os.environ.get('FRONTEND_ZIP_GOOGLE_DRIVE_ID')

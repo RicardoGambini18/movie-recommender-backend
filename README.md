@@ -9,13 +9,16 @@ Para facilitar la ejecución del proyecto, se ha implementado una **configuraci�
 Se ha creado un script de inicialización automática (`app.py`) que realiza todas las tareas de configuración de forma transparente. Simplemente ejecute el archivo `app.py` y el script se encargará automáticamente de:
 
 1. **Crear y activar el entorno virtual** (si no existe) en la carpeta `.venv/`
-2. **Instalar todas las dependencias** necesarias desde `requirements.txt`
-3. **Iniciar el servidor Flask**
-4. **Abrir la aplicación en el navegador** automáticamente una vez que el servidor esté listo, cargando la interfaz web de la carpeta `frontend/` para que se pueda utilizar la aplicación completa de forma local sin pasos adicionales
+2. **Crear el archivo `.env`** copiando automáticamente `.env.example` cuando sea necesario
+3. **Descargar la base de datos SQLite `algolab.db`** desde Google Drive. Este archivo también puede generarse manualmente con el repositorio [`tmdb-db-generator`](https://github.com/RicardoGambini18/tmdb-db-generator)
+4. **Descargar y descomprimir el build del frontend** desde Google Drive (`frontend.zip`). Si se desea generar manualmente, se puede compilar el proyecto [`algolab-frontend`](https://github.com/RicardoGambini18/algolab-frontend)
+5. **Instalar todas las dependencias** necesarias desde `requirements.txt`
+6. **Iniciar el servidor Flask**
+7. **Abrir la aplicación en el navegador** automáticamente una vez que el servidor esté listo, cargando la interfaz web de la carpeta `frontend/` para que se pueda utilizar la aplicación completa de forma local sin pasos adicionales
 
 Al abrir la interfaz local, se debe seleccionar cualquier usuario disponible e ingresar la sección del curso (**33396**) como contraseña para iniciar sesión y comenzar a probar la aplicación.
 
-**Nota:** La primera ejecución puede tardar unos minutos mientras se crea el entorno virtual e instalan las dependencias. Las ejecuciones posteriores serán más rápidas ya que reutilizará el entorno virtual existente. El archivo `.env` proporcionado incluye configuración de base de datos en la nube, por lo que no es necesario configurar PostgreSQL localmente.
+**Nota:** La primera ejecución puede tardar unos minutos mientras se crea el entorno virtual, se copian las variables de entorno y se descargan los recursos. Las ejecuciones posteriores serán más rápidas porque reutilizan todo lo configurado localmente. Si se desea usar otra base de datos, basta con editar el `.env` generado después de la primera ejecución.
 
 > **⚠️ Nota Importante:** Si no se necesita ejecutar la aplicación localmente, se puede utilizar la versión desplegada en **https://algolab-utp.vercel.app**.
 
@@ -60,7 +63,7 @@ Crear archivo `.env` en la raíz del proyecto con las siguientes variables:
 
 ```env
 # Base de datos (REQUERIDA)
-DATABASE_URL=postgresql://usuario:password@localhost:5432/algolab
+DATABASE_URI=postgresql://usuario:password@localhost:5432/algolab
 
 # Configuración de Flask (opcionales)
 FLASK_ENV=development
@@ -75,7 +78,11 @@ WARMUP_ITERATIONS=25000
 
 ### 6. Configurar Base de Datos
 
-Este proyecto asume que ya cuentas con una base de datos generada mediante [`tmdb-db-generator`](https://github.com/RicardoGambini18/tmdb-db-generator). Una vez creada, solo necesitas configurar `DATABASE_URL` para apuntar a esa instancia. No se requiere ejecutar migraciones ni comandos adicionales en este repositorio; basta con reutilizar la base provista.
+Este proyecto asume que ya cuentas con una base de datos generada mediante [`tmdb-db-generator`](https://github.com/RicardoGambini18/tmdb-db-generator). Una vez creada, solo necesitas configurar `DATABASE_URI` para apuntar a esa instancia. No se requiere ejecutar migraciones ni comandos adicionales en este repositorio; basta con reutilizar la base provista.
+
+### 7. (Opcional) Compilar Frontend local
+
+Si deseas servir la interfaz de usuario localmente, puedes compilar el proyecto [`algolab-frontend`](https://github.com/RicardoGambini18/algolab-frontend) (Next.js) siguiendo las instrucciones de su propio README. Una vez generado el build estático, copia los archivos resultantes a la carpeta `frontend/` en este repositorio. Al iniciar el servidor Flask, los archivos se servirán automáticamente.
 
 ## 🏃‍♂️ Ejecutar la Aplicación
 
@@ -83,7 +90,16 @@ Este proyecto asume que ya cuentas con una base de datos generada mediante [`tmd
 flask run
 ```
 
-Una vez levantado el servidor podrás acceder a la app en http://localhost:8080 y a la documentación Swagger en http://localhost:8080/apidocs.
+Una vez levantado el servidor podrás acceder a la documentación Swagger en http://localhost:${FLASK_RUN_PORT}/apidos. Si la carpeta `frontend/` está presente, la raíz http://localhost:${FLASK_RUN_PORT}/ mostrará la UI (login + dashboard); de lo contrario solo se expondrán los endpoints de la API.
+
+### 🖥️ Guía rápida de la interfaz web
+
+Si la carpeta `frontend/` está presente, al abrir http://localhost:${FLASK_RUN_PORT}/ verás la pantalla de login:
+
+1. Selecciona cualquier usuario.
+2. Ingresa como contraseña el valor de la variable `AUTH_PASSWORD`.
+3. Hacer click en “Iniciar Sesión”. Serás redirigido al dashboard con los módulos de algoritmos de búsqueda y ordenamiento.
+4. Cada módulo describe los pasos para ejecutar pruebas; basta con elegir los parámetros y ejecutar para ver métricas y resultados.
 
 ### 🔍 Endpoints Disponibles
 
@@ -100,7 +116,7 @@ Una vez levantado el servidor podrás acceder a la app en http://localhost:8080 
 **Swagger** es una interfaz interactiva que permite probar todos los endpoints directamente desde el navegador:
 
 1. **Acceder a Swagger:**
-   - Abrir http://localhost:8080/apidocs en el navegador
+   - Abrir http://localhost:${FLASK_RUN_PORT}/apidos en el navegador
    - Verás la documentación completa de todos los endpoints
 
 2. **Obtener token de acceso:**
