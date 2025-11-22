@@ -9,8 +9,8 @@ template = {
     "consumes": ["application/json"],
     "info": {
         "version": "1.0",
-        "title": "Algolab API",
-        "description": "Algolab es un laboratorio interactivo de algoritmos y estructuras de datos que permite experimentar con distintas implementaciones, comparar su rendimiento y visualizar su comportamiento en tiempo real, incluyendo comparadores de algoritmos de búsqueda y ordenamiento.",
+        "title": "Algolab Python Server",
+        "description": "Algolab es un laboratorio interactivo de algoritmos y estructuras de datos que permite experimentar con distintas implementaciones, comparar su rendimiento y visualizar su comportamiento en tiempo real, incluyendo comparadores de algoritmos de búsqueda y ordenamiento. Esta es la versión Python del servidor.",
     },
     "securityDefinitions": {
         "Bearer": {

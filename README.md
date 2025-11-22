@@ -1,6 +1,6 @@
-# Algolab - Backend API
+# Algolab - Python Server
 
-Algolab es un laboratorio interactivo enfocado en comparar algoritmos de búsqueda y ordenamiento, midiendo tiempo de ejecución, uso de memoria y número de comparaciones para cada implementación disponible.
+Algolab es un laboratorio interactivo enfocado en comparar algoritmos de búsqueda y ordenamiento, midiendo tiempo de ejecución, uso de memoria y número de comparaciones para cada implementación disponible. Esta es la versión Python del servidor.
 
 ## 🎯 Configuración Local Automática
 
@@ -32,7 +32,7 @@ Al abrir la interfaz local, se debe seleccionar cualquier usuario disponible e i
 ### 1. Navegar al Proyecto
 Clonar el repositorio o descargarlo y luego ingresar a la carpeta:
 ```bash
-cd algolab-backend
+cd algolab-python-server
 ```
 
 ### 2. Crear Entorno Virtual
