@@ -18,6 +18,12 @@ parameters:
     type: string
     required: true
     description: Clave única de la estructura de datos
+  - name: include_result
+    in: query
+    type: boolean
+    required: false
+    default: false
+    description: Si es true, incluye item_found e item_found_index con los detalles de la película encontrada. Por defecto es false para optimizar el rendimiento.
 responses:
   200:
     description: Resultado de la búsqueda de la película
@@ -57,6 +63,9 @@ definitions:
       item_found_index:
         type: integer
         description: Índice de la película encontrada
+      needs_sort:
+        type: boolean
+        description: Indica si el algoritmo necesita que la estructura de datos esté ordenada
       metrics:
         $ref: '#/definitions/AlgorithmMetrics'
   AlgorithmMetrics:

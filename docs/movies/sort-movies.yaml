@@ -13,6 +13,12 @@ parameters:
     type: string
     required: true
     description: Clave única de la estructura de datos
+  - name: include_result
+    in: query
+    type: boolean
+    required: false
+    default: false
+    description: Si es true, incluye el array sorted_data con todas las películas ordenadas. Por defecto es false para optimizar el rendimiento.
 responses:
   200:
     description: Resultado de la búsqueda de la película

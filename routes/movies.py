@@ -1,6 +1,7 @@
 from models import Movie
 from flask import request
 from flasgger import swag_from
+from dataclasses import asdict
 from config.logger import Logger
 from flask import Blueprint, jsonify
 from middlewares import auth_middleware
@@ -40,6 +41,8 @@ def sort_movies():
     try:
         algorithm_key = request.args.get('algorithm_key')
         data_structure_key = request.args.get('data_structure_key')
+        include_result = request.args.get(
+            'include_result', 'false').lower() == 'true'
 
         if algorithm_key is None or data_structure_key is None:
             return jsonify({"error": "Parámetros inválidos"}), 400
@@ -58,7 +61,13 @@ def sort_movies():
         if algorithm_method is None:
             return jsonify({"error": "Algoritmo no encontrado"}), 404
 
-        return jsonify(algorithm_method())
+        result = algorithm_method()
+        result_dict = asdict(result)
+
+        if not include_result:
+            result_dict.pop('sorted_data', None)
+
+        return jsonify(result_dict)
     except Exception as e:
         error_message = f"Error al ordenar las películas: {e}"
         Logger.error(error_message)
@@ -82,11 +91,18 @@ def get_movies_search_data_structures():
 @auth_middleware
 def search_movie():
     try:
-        movie_id = int(request.args.get('movie_id'))
+        movie_id_str = request.args.get('movie_id')
         algorithm_key = request.args.get('algorithm_key')
         data_structure_key = request.args.get('data_structure_key')
+        include_result = request.args.get(
+            'include_result', 'false').lower() == 'true'
 
-        if movie_id is None or algorithm_key is None or data_structure_key is None:
+        if movie_id_str is None or algorithm_key is None or data_structure_key is None:
+            return jsonify({"error": "Parámetros inválidos"}), 400
+
+        try:
+            movie_id = int(movie_id_str)
+        except (ValueError, TypeError):
             return jsonify({"error": "Parámetros inválidos"}), 400
 
         movies = Movie.query.order_by(Movie.id).all()
@@ -102,7 +118,14 @@ def search_movie():
         if algorithm_method is None:
             return jsonify({"error": "Algoritmo no encontrado"}), 404
 
-        return jsonify(algorithm_method(movie_id))
+        result = algorithm_method(movie_id)
+        result_dict = asdict(result)
+
+        if not include_result:
+            result_dict.pop('item_found', None)
+            result_dict.pop('item_found_index', None)
+
+        return jsonify(result_dict)
     except Exception as e:
         error_message = f"Error al buscar la película: {e}"
         Logger.error(error_message)
