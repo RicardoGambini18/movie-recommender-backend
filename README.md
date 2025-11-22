@@ -11,7 +11,7 @@ Se ha creado un script de inicialización automática (`app.py`) que realiza tod
 1. **Crear y activar el entorno virtual** (si no existe) en la carpeta `.venv/`
 2. **Crear el archivo `.env`** copiando automáticamente `.env.example` cuando sea necesario
 3. **Descargar la base de datos SQLite `algolab.db`** desde Google Drive y colocarla en la carpeta `instance/`. Este archivo también puede generarse manualmente con el repositorio [`tmdb-db-generator`](https://github.com/RicardoGambini18/tmdb-db-generator) y debe ubicarse en `instance/algolab.db`
-4. **Descargar y descomprimir el build del frontend** desde Google Drive (`frontend.zip`). Si se desea generar manualmente, se puede compilar el proyecto [`algolab-frontend`](https://github.com/RicardoGambini18/algolab-frontend)
+4. **Descargar y descomprimir el build del frontend** desde Google Drive (`frontend.zip`). Si se desea generar manualmente, se puede compilar el proyecto [`algolab-web-client`](https://github.com/RicardoGambini18/algolab-web-client)
 5. **Instalar todas las dependencias** necesarias desde `requirements.txt`
 6. **Iniciar el servidor Flask**
 7. **Abrir la aplicación en el navegador** automáticamente una vez que el servidor esté listo, cargando la interfaz web de la carpeta `frontend/` para que se pueda utilizar la aplicación completa de forma local sin pasos adicionales
@@ -88,7 +88,7 @@ Este proyecto asume que ya cuentas con una base de datos generada mediante [`tmd
 
 ### 7. (Opcional) Compilar Frontend local
 
-Si deseas servir la interfaz de usuario localmente, puedes compilar el proyecto [`algolab-frontend`](https://github.com/RicardoGambini18/algolab-frontend) (Next.js) siguiendo las instrucciones de su propio README. Una vez generado el build estático, copia los archivos resultantes a la carpeta `frontend/` en este repositorio. Al iniciar el servidor Flask, los archivos se servirán automáticamente.
+Si deseas servir la interfaz de usuario localmente, puedes compilar el proyecto [`algolab-web-client`](https://github.com/RicardoGambini18/algolab-web-client) (Next.js) siguiendo las instrucciones de su propio README. Una vez generado el build estático, copia los archivos resultantes a la carpeta `frontend/` en este repositorio. Al iniciar el servidor Flask, los archivos se servirán automáticamente.
 
 ## 🏃‍♂️ Ejecutar la Aplicación
 
