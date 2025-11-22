@@ -10,7 +10,7 @@ Se ha creado un script de inicialización automática (`app.py`) que realiza tod
 
 1. **Crear y activar el entorno virtual** (si no existe) en la carpeta `.venv/`
 2. **Crear el archivo `.env`** copiando automáticamente `.env.example` cuando sea necesario
-3. **Descargar la base de datos SQLite `algolab.db`** desde Google Drive. Este archivo también puede generarse manualmente con el repositorio [`tmdb-db-generator`](https://github.com/RicardoGambini18/tmdb-db-generator)
+3. **Descargar la base de datos SQLite `algolab.db`** desde Google Drive y colocarla en la carpeta `instance/`. Este archivo también puede generarse manualmente con el repositorio [`tmdb-db-generator`](https://github.com/RicardoGambini18/tmdb-db-generator) y debe ubicarse en `instance/algolab.db`
 4. **Descargar y descomprimir el build del frontend** desde Google Drive (`frontend.zip`). Si se desea generar manualmente, se puede compilar el proyecto [`algolab-frontend`](https://github.com/RicardoGambini18/algolab-frontend)
 5. **Instalar todas las dependencias** necesarias desde `requirements.txt`
 6. **Iniciar el servidor Flask**
@@ -63,7 +63,10 @@ Crear archivo `.env` en la raíz del proyecto con las siguientes variables:
 
 ```env
 # Base de datos (REQUERIDA)
+# Para PostgreSQL:
 DATABASE_URI=postgresql://usuario:password@localhost:5432/algolab
+# Para SQLite (la base de datos debe estar en instance/algolab.db):
+# DATABASE_URI=sqlite+pysqlite:///algolab.db
 
 # Configuración de Flask (opcionales)
 FLASK_ENV=development
@@ -78,7 +81,10 @@ WARMUP_ITERATIONS=25000
 
 ### 6. Configurar Base de Datos
 
-Este proyecto asume que ya cuentas con una base de datos generada mediante [`tmdb-db-generator`](https://github.com/RicardoGambini18/tmdb-db-generator). Una vez creada, solo necesitas configurar `DATABASE_URI` para apuntar a esa instancia. No se requiere ejecutar migraciones ni comandos adicionales en este repositorio; basta con reutilizar la base provista.
+Este proyecto asume que ya cuentas con una base de datos generada mediante [`tmdb-db-generator`](https://github.com/RicardoGambini18/tmdb-db-generator), que soporta tanto PostgreSQL como SQLite. Una vez creada, configura `DATABASE_URI` en el archivo `.env` para apuntar a esa instancia:
+
+- **Para PostgreSQL:** Usa una URI como `postgresql://usuario:password@localhost:5432/algolab`. La base de datos debe estar corriendo en tu servidor PostgreSQL.
+- **Para SQLite:** Usa una URI relativa como `sqlite+pysqlite:///algolab.db`. La base de datos debe estar ubicada en la carpeta `instance/` con el nombre `algolab.db` (es decir, `instance/algolab.db`). La carpeta `instance/` es creada automáticamente por Flask y es donde se almacenan archivos específicos de la instancia de la aplicación.
 
 ### 7. (Opcional) Compilar Frontend local
 

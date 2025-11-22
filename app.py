@@ -123,13 +123,17 @@ def download_from_google_drive(file_id, destination, file_name):
 
 
 SQLITE_DB_FILE_NAME = "algolab.db"
-SQLITE_DB_PATH = script_dir / SQLITE_DB_FILE_NAME
+INSTANCE_DIR = script_dir / "instance"
+SQLITE_DB_PATH = INSTANCE_DIR / SQLITE_DB_FILE_NAME
 
 
 def ensure_sqlite_db():
     from config.environment import Environment
 
     Logger.info("Verificando base de datos SQLite")
+
+    if not INSTANCE_DIR.exists():
+        INSTANCE_DIR.mkdir(parents=True, exist_ok=True)
 
     if SQLITE_DB_PATH.exists():
         Logger.success("Base de datos SQLite encontrada")
