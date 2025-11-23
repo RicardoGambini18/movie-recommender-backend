@@ -6,7 +6,11 @@ from config.logger import Logger
 from flask import Blueprint, jsonify
 from middlewares import auth_middleware
 from core.constants import MOVIES_SORT_LIMIT
+from core.stack_sort_algorithm_registry import StackSortAlgorithmRegistry
+from core.queue_sort_algorithm_registry import QueueSortAlgorithmRegistry
 from core.vector_sort_algorithm_registry import VectorSortAlgorithmRegistry
+from core.stack_search_algorithm_registry import StackSearchAlgorithmRegistry
+from core.queue_search_algorithm_registry import QueueSearchAlgorithmRegistry
 from core.vector_search_algorithm_registry import VectorSearchAlgorithmRegistry
 from core.data_structure_algorithm_registry import DataStructureAlgorithmRegistryManager
 
@@ -14,11 +18,19 @@ movies_bp = Blueprint('movies', __name__)
 
 
 sort_registry_manager = DataStructureAlgorithmRegistryManager(
-    registries=[VectorSortAlgorithmRegistry]
+    registries=[
+        StackSortAlgorithmRegistry,
+        QueueSortAlgorithmRegistry,
+        VectorSortAlgorithmRegistry
+    ]
 )
 
 search_registry_manager = DataStructureAlgorithmRegistryManager(
-    registries=[VectorSearchAlgorithmRegistry]
+    registries=[
+        StackSearchAlgorithmRegistry,
+        QueueSearchAlgorithmRegistry,
+        VectorSearchAlgorithmRegistry
+    ]
 )
 
 
@@ -123,7 +135,6 @@ def search_movie():
 
         if not include_result:
             result_dict.pop('item_found', None)
-            result_dict.pop('item_found_index', None)
 
         return jsonify(result_dict)
     except Exception as e:

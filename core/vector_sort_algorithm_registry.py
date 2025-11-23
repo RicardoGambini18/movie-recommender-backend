@@ -7,8 +7,8 @@ from core.data_structure_algorithm_registry import AlgorithmOption, DataStructur
 
 class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
     def __init__(self, data: list[dict] = [], value_getter: Callable[[dict], int] = lambda: 0):
-        self.data = data
-        self.value_getter = value_getter
+        self._data = data
+        self._value_getter = value_getter
 
     def register(self):
         return DataStructureOption(
@@ -80,7 +80,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        sorted_data = self.data.copy()
+        sorted_data = self._data.copy()
         n = len(sorted_data)
 
         for i in range(n):
@@ -89,8 +89,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             for j in range(n - i - 1):
                 a = sorted_data[j]
                 b = sorted_data[j + 1]
-                a_value = self.value_getter(a)
-                b_value = self.value_getter(b)
+                a_value = self._value_getter(a)
+                b_value = self._value_getter(b)
 
                 metrics_manager.increment_comparisons()
 
@@ -106,7 +106,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['name'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()
         )
@@ -115,15 +115,15 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        sorted_data = self.data.copy()
+        sorted_data = self._data.copy()
         n = len(sorted_data)
 
         for i in range(n):
             min_index = i
-            min_value = self.value_getter(sorted_data[i])
+            min_value = self._value_getter(sorted_data[i])
 
             for j in range(i + 1, n):
-                value = self.value_getter(sorted_data[j])
+                value = self._value_getter(sorted_data[j])
 
                 if value < min_value:
                     min_index = j
@@ -138,7 +138,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['name'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()
         )
@@ -147,16 +147,16 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        sorted_data = self.data.copy()
+        sorted_data = self._data.copy()
         n = len(sorted_data)
 
         for i in range(1, n):
             item = sorted_data[i]
-            item_value = self.value_getter(item)
+            item_value = self._value_getter(item)
 
             j = i - 1
             previous_item = sorted_data[j]
-            previous_item_value = self.value_getter(previous_item)
+            previous_item_value = self._value_getter(previous_item)
 
             while j >= 0 and previous_item_value > item_value:
                 metrics_manager.increment_comparisons()
@@ -164,7 +164,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
 
                 j -= 1
                 previous_item = sorted_data[j]
-                previous_item_value = self.value_getter(previous_item)
+                previous_item_value = self._value_getter(previous_item)
 
             metrics_manager.increment_comparisons()
             sorted_data[j + 1] = item
@@ -174,7 +174,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['name'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()
         )
@@ -183,20 +183,20 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        sorted_data = self.recursive_merge_sort(
-            self.data.copy(), metrics_manager)
+        sorted_data = self._recursive_merge_sort(
+            self._data.copy(), metrics_manager)
 
         metrics_manager.end()
 
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['name'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()
         )
 
-    def recursive_merge_sort(self, data, metrics_manager):
+    def _recursive_merge_sort(self, data, metrics_manager):
         n = len(data)
 
         if n <= 1:
@@ -206,20 +206,20 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         left = data[:mid]
         right = data[mid:]
 
-        left_sorted = self.recursive_merge_sort(left, metrics_manager)
-        right_sorted = self.recursive_merge_sort(right, metrics_manager)
+        left_sorted = self._recursive_merge_sort(left, metrics_manager)
+        right_sorted = self._recursive_merge_sort(right, metrics_manager)
 
-        return self.merge(left_sorted, right_sorted, metrics_manager)
+        return self._merge(left_sorted, right_sorted, metrics_manager)
 
-    def merge(self, left, right, metrics_manager):
+    def _merge(self, left, right, metrics_manager):
         i = j = 0
         merged_data = []
 
         while i < len(left) and j < len(right):
             a = left[i]
             b = right[j]
-            a_value = self.value_getter(a)
-            b_value = self.value_getter(b)
+            a_value = self._value_getter(a)
+            b_value = self._value_getter(b)
 
             metrics_manager.increment_comparisons()
 
@@ -239,32 +239,32 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        sorted_data = self.recursive_quick_sort(
-            self.data.copy(), metrics_manager)
+        sorted_data = self._recursive_quick_sort(
+            self._data.copy(), metrics_manager)
 
         metrics_manager.end()
 
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['name'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             sorted_data=sorted_data,
             metrics=metrics_manager.get_metrics()
         )
 
-    def recursive_quick_sort(self, data, metrics_manager):
+    def _recursive_quick_sort(self, data, metrics_manager):
         if len(data) <= 1:
             return data
 
         pivot = data[len(data) // 2]
-        pivot_value = self.value_getter(pivot)
+        pivot_value = self._value_getter(pivot)
 
         left = []
         middle = []
         right = []
 
         for x in data:
-            x_value = self.value_getter(x)
+            x_value = self._value_getter(x)
             metrics_manager.increment_comparisons()
 
             if x_value < pivot_value:
@@ -274,6 +274,6 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             else:
                 right.append(x)
 
-        return (self.recursive_quick_sort(left, metrics_manager) +
+        return (self._recursive_quick_sort(left, metrics_manager) +
                 middle +
-                self.recursive_quick_sort(right, metrics_manager))
+                self._recursive_quick_sort(right, metrics_manager))

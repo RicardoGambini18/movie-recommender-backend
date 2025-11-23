@@ -108,4 +108,69 @@ INFO = {
             },
         },
     },
+    'STACK': {
+        'key': 'stack',
+        'name': 'Pila',
+        'description': 'Estructura de datos lineal con comportamiento LIFO (Last In, First Out). Solo permite acceso al elemento de la cima mediante operaciones push (insertar) y pop (extraer). Útil para algoritmos que requieren procesamiento en orden inverso o gestión de estados.',
+        'sort_algorithms': {
+            'SORT_STACK': {
+                'key': 'sort_stack',
+                'name': 'Ordenamiento con Pila Auxiliar (Sort Stack)',
+                'description': 'Algoritmo iterativo que ordena una pila usando una pila auxiliar. Extrae elementos de la pila original y los inserta en la pila auxiliar en orden, luego transfiere de vuelta para obtener el ordenamiento final. Respeta estrictamente las operaciones LIFO de la estructura.',
+                'best_time_complexity': r'O(n^2)',
+                'average_time_complexity': r'O(n^2)',
+                'worst_time_complexity': r'O(n^2)',
+                'space_complexity': r'O(n)'
+            },
+        },
+        'search_algorithms': {
+            'LINEAR_SEARCH': {
+                'key': 'linear_search',
+                'name': 'Búsqueda Lineal con Restauración',
+                'needs_sort': False,
+                'description': 'Recorre la pila extrayendo elementos de la cima y comparándolos con el objetivo. Usa una pila auxiliar para preservar el estado original y restaura todos los elementos después de la búsqueda. Respeta estrictamente las operaciones LIFO.',
+                'best_time_complexity': r'O(1)',
+                'average_time_complexity': r'O(n)',
+                'worst_time_complexity': r'O(n)',
+                'space_complexity': r'O(n)'
+            },
+        },
+    },
+    'QUEUE': {
+        'key': 'queue',
+        'name': 'Cola',
+        'description': 'Estructura de datos lineal con comportamiento FIFO (First In, First Out). Solo permite acceso al elemento del frente mediante operaciones enqueue (insertar al final) y dequeue (extraer del frente). Útil para algoritmos que requieren procesamiento en orden de llegada o simulaciones.',
+        'sort_algorithms': {
+            'SELECTION_SORT': {
+                'key': 'selection_sort',
+                'name': 'Ordenamiento por selección (Selection sort)',
+                'description': 'Algoritmo iterativo que ordena una cola rotándola para encontrar el valor mínimo en cada iteración. Extrae el mínimo y lo coloca en una cola ordenada. Complejidad cuadrática pero respeta estrictamente las operaciones FIFO de la estructura.',
+                'best_time_complexity': r'O(n^2)',
+                'average_time_complexity': r'O(n^2)',
+                'worst_time_complexity': r'O(n^2)',
+                'space_complexity': r'O(n)'
+            },
+            'MERGE_SORT': {
+                'key': 'merge_sort',
+                'name': 'Ordenamiento por mezcla (Merge sort)',
+                'description': 'Estrategia de divide y vencerás adaptada para colas. Divide la cola en dos mitades, ordena cada mitad recursivamente y luego fusiona las colas ordenadas comparando los frentes. Respeta estrictamente las operaciones FIFO y ofrece rendimiento garantizado.',
+                'best_time_complexity': r'O(n\log n)',
+                'average_time_complexity': r'O(n\log n)',
+                'worst_time_complexity': r'O(n\log n)',
+                'space_complexity': r'O(n)'
+            },
+        },
+        'search_algorithms': {
+            'LINEAR_SEARCH': {
+                'key': 'linear_search',
+                'name': 'Búsqueda Lineal por Rotación',
+                'needs_sort': False,
+                'description': 'Recorre la cola rotándola completamente: extrae elementos del frente, los compara con el objetivo y los vuelve a insertar al final. La cola vuelve automáticamente a su estado original sin necesidad de estructuras auxiliares. Respeta estrictamente las operaciones FIFO.',
+                'best_time_complexity': r'O(1)',
+                'average_time_complexity': r'O(n)',
+                'worst_time_complexity': r'O(n)',
+                'space_complexity': r'O(1)'
+            },
+        },
+    },
 }

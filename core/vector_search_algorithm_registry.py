@@ -8,8 +8,8 @@ from core.data_structure_algorithm_registry import DataStructureOption,  DataStr
 
 class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
     def __init__(self, data: list[dict] = [], value_getter: Callable[[dict], int] = lambda: 0):
-        self.data = data
-        self.value_getter = value_getter
+        self._data = data
+        self._value_getter = value_getter
 
     def register(self):
         return DataStructureOption(
@@ -89,17 +89,18 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        for index, item in enumerate(self.data):
+        for index, item in enumerate(self._data):
+            item_value = self._value_getter(item)
             metrics_manager.increment_comparisons()
 
-            if self.value_getter(item) == value:
+            if item_value == value:
                 metrics_manager.end()
 
                 return SearchResult(
                     data_structure=INFO['VECTOR']['name'],
                     algorithm=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['name'],
                     needs_sort=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
-                    item_count=len(self.data),
+                    item_count=len(self._data),
                     item_found=item,
                     item_found_index=index,
                     metrics=metrics_manager.get_metrics()
@@ -111,7 +112,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['name'],
             needs_sort=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             item_found=None,
             item_found_index=None,
             metrics=metrics_manager.get_metrics()
@@ -122,12 +123,12 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.start()
 
         low = 0
-        high = len(self.data) - 1
+        high = len(self._data) - 1
 
         while low <= high:
             mid = (low + high) // 2
-            item = self.data[mid]
-            item_value = self.value_getter(item)
+            item = self._data[mid]
+            item_value = self._value_getter(item)
             metrics_manager.increment_comparisons()
 
             if item_value == value:
@@ -137,7 +138,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     data_structure=INFO['VECTOR']['name'],
                     algorithm=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['name'],
                     needs_sort=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
-                    item_count=len(self.data),
+                    item_count=len(self._data),
                     item_found=item,
                     item_found_index=mid,
                     metrics=metrics_manager.get_metrics()
@@ -153,7 +154,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['name'],
             needs_sort=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             item_found=None,
             item_found_index=None,
             metrics=metrics_manager.get_metrics()
@@ -163,7 +164,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        n = len(self.data)
+        n = len(self._data)
 
         if n == 0:
             metrics_manager.end()
@@ -172,7 +173,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 data_structure=INFO['VECTOR']['name'],
                 algorithm=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['name'],
                 needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
-                item_count=len(self.data),
+                item_count=len(self._data),
                 item_found=None,
                 item_found_index=None,
                 metrics=metrics_manager.get_metrics()
@@ -190,8 +191,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         for step in range(steps):
             current_start = step_size * step
             current_end = min(current_start + step_size, n)
-            current_item = self.data[current_end - 1]
-            current_value = self.value_getter(current_item)
+            current_item = self._data[current_end - 1]
+            current_value = self._value_getter(current_item)
             metrics_manager.increment_comparisons()
 
             if value <= current_value:
@@ -206,15 +207,15 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 data_structure=INFO['VECTOR']['name'],
                 algorithm=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['name'],
                 needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
-                item_count=len(self.data),
+                item_count=len(self._data),
                 item_found=None,
                 item_found_index=None,
                 metrics=metrics_manager.get_metrics()
             )
 
         for i in range(target_start, target_end):
-            item = self.data[i]
-            item_value = self.value_getter(item)
+            item = self._data[i]
+            item_value = self._value_getter(item)
             metrics_manager.increment_comparisons()
 
             if item_value == value:
@@ -224,7 +225,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     data_structure=INFO['VECTOR']['name'],
                     algorithm=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['name'],
                     needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
-                    item_count=len(self.data),
+                    item_count=len(self._data),
                     item_found=item,
                     item_found_index=i,
                     metrics=metrics_manager.get_metrics()
@@ -236,7 +237,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['name'],
             needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             item_found=None,
             item_found_index=None,
             metrics=metrics_manager.get_metrics()
@@ -246,7 +247,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        n = len(self.data)
+        n = len(self._data)
 
         if n == 0:
             metrics_manager.end()
@@ -261,8 +262,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 metrics=metrics_manager.get_metrics()
             )
 
-        first_item = self.data[0]
-        first_value = self.value_getter(first_item)
+        first_item = self._data[0]
+        first_value = self._value_getter(first_item)
         metrics_manager.increment_comparisons()
 
         if first_value == value:
@@ -272,7 +273,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 data_structure=INFO['VECTOR']['name'],
                 algorithm=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['name'],
                 needs_sort=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
-                item_count=len(self.data),
+                item_count=len(self._data),
                 item_found=first_item,
                 item_found_index=0,
                 metrics=metrics_manager.get_metrics()
@@ -281,8 +282,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         i = 1
 
         while i < n:
-            current_item = self.data[i]
-            current_value = self.value_getter(current_item)
+            current_item = self._data[i]
+            current_value = self._value_getter(current_item)
             metrics_manager.increment_comparisons()
 
             if current_value > value:
@@ -293,8 +294,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         left = i // 2
         right = min(i, n - 1)
 
-        found_result = self.recursive_binary_search(
-            self.data, left, right, value, metrics_manager)
+        found_result = self._recursive_binary_search(
+            self._data, left, right, value, metrics_manager)
 
         metrics_manager.end()
 
@@ -302,17 +303,17 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['name'],
             needs_sort=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             item_found=found_result['item'] if found_result else None,
             item_found_index=found_result['index'] if found_result else None,
             metrics=metrics_manager.get_metrics()
         )
 
-    def recursive_binary_search(self, data, left, right, value, metrics_manager):
+    def _recursive_binary_search(self, data, left, right, value, metrics_manager):
         if right >= left:
             mid = left + (right - left) // 2
             mid_item = data[mid]
-            mid_value = self.value_getter(mid_item)
+            mid_value = self._value_getter(mid_item)
 
             metrics_manager.increment_comparisons()
 
@@ -320,9 +321,9 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 return {'item': mid_item, 'index': mid}
 
             if mid_value > value:
-                return self.recursive_binary_search(data, left, mid - 1, value, metrics_manager)
+                return self._recursive_binary_search(data, left, mid - 1, value, metrics_manager)
 
-            return self.recursive_binary_search(data, mid + 1, right, value, metrics_manager)
+            return self._recursive_binary_search(data, mid + 1, right, value, metrics_manager)
 
         return None
 
@@ -330,7 +331,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        n = len(self.data)
+        n = len(self._data)
 
         if n == 0:
             metrics_manager.end()
@@ -345,8 +346,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 metrics=metrics_manager.get_metrics()
             )
 
-        found_result = self.recursive_interpolation_search(
-            self.data, 0, n - 1, value, metrics_manager)
+        found_result = self._recursive_interpolation_search(
+            self._data, 0, n - 1, value, metrics_manager)
 
         metrics_manager.end()
 
@@ -354,18 +355,18 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['name'],
             needs_sort=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
-            item_count=len(self.data),
+            item_count=len(self._data),
             item_found=found_result['item'] if found_result else None,
             item_found_index=found_result['index'] if found_result else None,
             metrics=metrics_manager.get_metrics()
         )
 
-    def recursive_interpolation_search(self, data, left, right, value, metrics_manager):
+    def _recursive_interpolation_search(self, data, left, right, value, metrics_manager):
         if left <= right:
             left_item = data[left]
             right_item = data[right]
-            left_value = self.value_getter(left_item)
-            right_value = self.value_getter(right_item)
+            left_value = self._value_getter(left_item)
+            right_value = self._value_getter(right_item)
 
             metrics_manager.increment_comparisons()
 
@@ -375,7 +376,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             if left_value == right_value:
                 for i in range(left, right + 1):
                     item = data[i]
-                    item_value = self.value_getter(item)
+                    item_value = self._value_getter(item)
 
                     metrics_manager.increment_comparisons()
 
@@ -390,7 +391,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             pos = max(left, min(pos, right))
 
             pos_item = data[pos]
-            pos_value = self.value_getter(pos_item)
+            pos_value = self._value_getter(pos_item)
 
             metrics_manager.increment_comparisons()
 
@@ -398,8 +399,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 return {'item': pos_item, 'index': pos}
 
             if pos_value < value:
-                return self.recursive_interpolation_search(data, pos + 1, right, value, metrics_manager)
+                return self._recursive_interpolation_search(data, pos + 1, right, value, metrics_manager)
 
-            return self.recursive_interpolation_search(data, left, pos - 1, value, metrics_manager)
+            return self._recursive_interpolation_search(data, left, pos - 1, value, metrics_manager)
 
         return None
