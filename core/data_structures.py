@@ -120,3 +120,39 @@ class Queue(DataStructure[T]):
         queue_copy = Queue[T]([])
         queue_copy._items = self._items.copy()
         return queue_copy
+
+
+class Vector(DataStructure[T]):
+    def _build_from_list(self, data: list[T]) -> None:
+        self._items: list[T] = data.copy()
+
+    def to_list(self) -> list[T]:
+        return self._items.copy()
+
+    def is_empty(self) -> bool:
+        return len(self._items) == 0
+
+    def size(self) -> int:
+        return len(self._items)
+
+    def copy(self) -> 'Vector[T]':
+        vector_copy = Vector[T]([])
+        vector_copy._items = self._items.copy()
+        return vector_copy
+
+    def get_item(self, index: int) -> T:
+        return self._items[index]
+
+    def set_item(self, index: int, value: T) -> None:
+        self._items[index] = value
+
+    def get_slice(self, start: int, end: int) -> 'Vector[T]':
+        vector_slice = Vector[T]([])
+        vector_slice._items = self._items[start:end].copy()
+        return vector_slice
+
+    def append(self, item: T) -> None:
+        self._items.append(item)
+
+    def extend(self, other: 'Vector[T]') -> None:
+        self._items.extend(other._items)
