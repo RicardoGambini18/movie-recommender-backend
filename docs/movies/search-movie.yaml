@@ -23,7 +23,7 @@ parameters:
     type: boolean
     required: false
     default: false
-    description: Si es true, incluye item_found e item_found_index con los detalles de la película encontrada. Por defecto es false para optimizar el rendimiento.
+    description: Si es true, incluye item_found e item_found_position con los detalles de la película encontrada. Por defecto es false para optimizar el rendimiento.
 responses:
   200:
     description: Resultado de la búsqueda de la película
@@ -60,9 +60,9 @@ definitions:
         description: Cantidad de elementos en la estructura de datos
       item_found:
         $ref: '#/definitions/Movie'
-      item_found_index:
+      item_found_position:
         type: integer
-        description: Índice de la película encontrada
+        description: Posición de la película encontrada
       needs_sort:
         type: boolean
         description: Indica si el algoritmo necesita que la estructura de datos esté ordenada

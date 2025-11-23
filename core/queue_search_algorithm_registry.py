@@ -37,7 +37,7 @@ class QueueSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         data_copy = self._data.copy()
         item_count = data_copy.size()
 
-        for index in range(item_count):
+        for _ in range(item_count):
             item = data_copy.dequeue()
             item_value = self._value_getter(item)
             metrics_manager.increment_comparisons()
@@ -51,7 +51,6 @@ class QueueSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     needs_sort=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
                     item_count=item_count,
                     item_found=item,
-                    item_found_index=index,
                     metrics=metrics_manager.get_metrics()
                 )
 
@@ -63,6 +62,5 @@ class QueueSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
             item_count=item_count,
             item_found=None,
-            item_found_index=None,
             metrics=metrics_manager.get_metrics()
         )

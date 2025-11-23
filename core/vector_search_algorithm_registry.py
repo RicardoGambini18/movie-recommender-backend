@@ -104,7 +104,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     needs_sort=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
                     item_count=self._data.size(),
                     item_found=item,
-                    item_found_index=index,
                     metrics=metrics_manager.get_metrics()
                 )
 
@@ -116,7 +115,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
             item_count=self._data.size(),
             item_found=None,
-            item_found_index=None,
             metrics=metrics_manager.get_metrics()
         )
 
@@ -142,7 +140,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     needs_sort=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
                     item_count=self._data.size(),
                     item_found=item,
-                    item_found_index=mid,
                     metrics=metrics_manager.get_metrics()
                 )
             elif item_value < value:
@@ -158,7 +155,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
             item_count=self._data.size(),
             item_found=None,
-            item_found_index=None,
             metrics=metrics_manager.get_metrics()
         )
 
@@ -177,7 +173,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                 item_count=self._data.size(),
                 item_found=None,
-                item_found_index=None,
                 metrics=metrics_manager.get_metrics()
             )
 
@@ -211,7 +206,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                 item_count=self._data.size(),
                 item_found=None,
-                item_found_index=None,
                 metrics=metrics_manager.get_metrics()
             )
 
@@ -229,7 +223,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                     item_count=self._data.size(),
                     item_found=item,
-                    item_found_index=index,
                     metrics=metrics_manager.get_metrics()
                 )
 
@@ -241,7 +234,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
             item_count=self._data.size(),
             item_found=None,
-            item_found_index=None,
             metrics=metrics_manager.get_metrics()
         )
 
@@ -260,7 +252,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
                 item_count=0,
                 item_found=None,
-                item_found_index=None,
                 metrics=metrics_manager.get_metrics()
             )
 
@@ -277,7 +268,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
                 item_count=self._data.size(),
                 item_found=first_item,
-                item_found_index=0,
                 metrics=metrics_manager.get_metrics()
             )
 
@@ -307,7 +297,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
             item_count=self._data.size(),
             item_found=found_result['item'] if found_result else None,
-            item_found_index=found_result['index'] if found_result else None,
             metrics=metrics_manager.get_metrics()
         )
 
@@ -344,7 +333,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
                 item_count=0,
                 item_found=None,
-                item_found_index=None,
                 metrics=metrics_manager.get_metrics()
             )
 
@@ -359,7 +347,6 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
             item_count=self._data.size(),
             item_found=found_result['item'] if found_result else None,
-            item_found_index=found_result['index'] if found_result else None,
             metrics=metrics_manager.get_metrics()
         )
 

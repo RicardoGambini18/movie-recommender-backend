@@ -132,6 +132,14 @@ def search_movie():
 
         result = algorithm_method(movie_id)
         result_dict = asdict(result)
+        result_dict['item_found_position'] = None
+
+        if result_dict['item_found'] is not None:
+            found_movie_id = result_dict['item_found']['id']
+            for index, movie in enumerate(movies_data):
+                if movie['id'] == found_movie_id:
+                    result_dict['item_found_position'] = index + 1
+                    break
 
         if not include_result:
             result_dict.pop('item_found', None)

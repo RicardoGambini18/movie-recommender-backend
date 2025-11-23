@@ -19,4 +19,3 @@ class SortResult(AlgorithmResult):
 class SearchResult(AlgorithmResult):
     needs_sort: bool
     item_found: dict | None
-    item_found_index: int | None
