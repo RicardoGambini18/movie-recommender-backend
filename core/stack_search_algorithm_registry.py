@@ -34,25 +34,32 @@ class StackSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        data_copy = self._data.copy()
-        item_count = data_copy.size()
+        item_found = None
+        aux_stack = Stack[dict]()
+        metrics_manager.increment_operations(2)
 
-        for _ in range(item_count):
-            item = data_copy.pop()
-            item_value = self._value_getter(item)
-            metrics_manager.increment_comparisons()
+        while not self._data.is_empty():
+            item = self._data.pop()
+            aux_stack.push(item)
+            metrics_manager.increment_operations(3)
 
-            if item_value == value:
-                metrics_manager.end()
+            if item_found is None:
+                item_value = self._value_getter(item)
+                metrics_manager.increment_operations(2)
 
-                return SearchResult(
-                    data_structure=INFO['STACK']['name'],
-                    algorithm=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['name'],
-                    needs_sort=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
-                    item_count=item_count,
-                    item_found=item,
-                    metrics=metrics_manager.get_metrics()
-                )
+                if item_value == value:
+                    item_found = item
+                    metrics_manager.increment_operations(1)
+                    break
+
+        metrics_manager.increment_operations(1)
+
+        while not aux_stack.is_empty():
+            item = aux_stack.pop()
+            self._data.push(item)
+            metrics_manager.increment_operations(3)
+
+        metrics_manager.increment_operations(1)
 
         metrics_manager.end()
 
@@ -60,7 +67,7 @@ class StackSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             data_structure=INFO['STACK']['name'],
             algorithm=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['name'],
             needs_sort=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
-            item_count=item_count,
-            item_found=None,
+            item_found=item_found,
+            item_count=self._data.size(),
             metrics=metrics_manager.get_metrics()
         )

@@ -34,25 +34,24 @@ class QueueSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
-        data_copy = self._data.copy()
-        item_count = data_copy.size()
+        item_found = None
+        item_count = self._data.size()
+        metrics_manager.increment_operations(2)
 
         for _ in range(item_count):
-            item = data_copy.dequeue()
-            item_value = self._value_getter(item)
-            metrics_manager.increment_comparisons()
+            item = self._data.dequeue()
+            metrics_manager.increment_operations(3)
 
-            if item_value == value:
-                metrics_manager.end()
+            if item_found is None:
+                item_value = self._value_getter(item)
+                metrics_manager.increment_operations(2)
 
-                return SearchResult(
-                    data_structure=INFO['QUEUE']['name'],
-                    algorithm=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['name'],
-                    needs_sort=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
-                    item_count=item_count,
-                    item_found=item,
-                    metrics=metrics_manager.get_metrics()
-                )
+                if item_value == value:
+                    item_found = item
+                    metrics_manager.increment_operations(1)
+
+            self._data.enqueue(item)
+            metrics_manager.increment_operations(1)
 
         metrics_manager.end()
 
@@ -61,6 +60,6 @@ class QueueSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             algorithm=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['name'],
             needs_sort=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
             item_count=item_count,
-            item_found=None,
+            item_found=item_found,
             metrics=metrics_manager.get_metrics()
         )

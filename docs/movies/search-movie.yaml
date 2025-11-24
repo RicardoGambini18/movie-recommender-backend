@@ -77,9 +77,9 @@ definitions:
       memory:
         type: integer
         description: Memoria utilizada en bytes
-      comparisons:
+      operations:
         type: integer
-        description: Cantidad de comparaciones realizadas
+        description: Cantidad de operaciones realizadas
   Error:
     type: object
     properties:

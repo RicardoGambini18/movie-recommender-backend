@@ -45,31 +45,44 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         sorted_data = Queue[dict]()
         aux_queue = self._data.copy()
         item_count = self._data.size()
+        metrics_manager.increment_operations(item_count + 2)
 
         for _ in range(item_count):
             min_item = None
             min_value = None
             aux_queue_size = aux_queue.size()
+            metrics_manager.increment_operations(4)
 
             for __ in range(aux_queue_size):
                 item = aux_queue.dequeue()
                 item_value = self._value_getter(item)
-                metrics_manager.increment_comparisons()
+                metrics_manager.increment_operations(4)
 
                 if min_value is None:
                     min_item = item
                     min_value = item_value
+                    metrics_manager.increment_operations(2)
                 else:
+                    metrics_manager.increment_operations(1)
+
                     if item_value < min_value:
+                        metrics_manager.increment_operations(1)
                         if min_item is not None:
                             aux_queue.enqueue(min_item)
+                            metrics_manager.increment_operations(1)
+
                         min_item = item
                         min_value = item_value
+                        metrics_manager.increment_operations(2)
                     else:
                         aux_queue.enqueue(item)
+                        metrics_manager.increment_operations(1)
+
+            metrics_manager.increment_operations(1)
 
             if min_item is not None:
                 sorted_data.enqueue(min_item)
+                metrics_manager.increment_operations(1)
 
         metrics_manager.end()
 
@@ -85,6 +98,7 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager = AlgorithmMetricsManager()
         metrics_manager.start()
 
+        metrics_manager.increment_operations(self._data.size())
         sorted_data = self._recursive_merge_sort(
             self._data.copy(), metrics_manager)
 
@@ -100,19 +114,26 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
 
     def _recursive_merge_sort(self, queue: Queue[dict], metrics_manager: AlgorithmMetricsManager) -> Queue[dict]:
         n = queue.size()
+        metrics_manager.increment_operations(2)
 
         if n <= 1:
             return queue
 
         left = Queue[dict]()
         right = Queue[dict]()
-
         mid = n // 2
+
+        metrics_manager.increment_operations(3)
+
         for _ in range(mid):
             left.enqueue(queue.dequeue())
+            metrics_manager.increment_operations(3)
 
         while not queue.is_empty():
             right.enqueue(queue.dequeue())
+            metrics_manager.increment_operations(3)
+
+        metrics_manager.increment_operations(1)
 
         left_sorted = self._recursive_merge_sort(left, metrics_manager)
         right_sorted = self._recursive_merge_sort(right, metrics_manager)
@@ -121,24 +142,34 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
 
     def _merge(self, left: Queue[dict], right: Queue[dict], metrics_manager: AlgorithmMetricsManager) -> Queue[dict]:
         merged_queue = Queue[dict]()
+        metrics_manager.increment_operations(1)
 
         while not left.is_empty() and not right.is_empty():
             a = left.peek()
             b = right.peek()
             a_value = self._value_getter(a)
             b_value = self._value_getter(b)
-
-            metrics_manager.increment_comparisons()
+            metrics_manager.increment_operations(7)
 
             if a_value <= b_value:
                 merged_queue.enqueue(left.dequeue())
+                metrics_manager.increment_operations(2)
             else:
                 merged_queue.enqueue(right.dequeue())
+                metrics_manager.increment_operations(2)
+
+        metrics_manager.increment_operations(2)
 
         while not left.is_empty():
             merged_queue.enqueue(left.dequeue())
+            metrics_manager.increment_operations(3)
+
+        metrics_manager.increment_operations(1)
 
         while not right.is_empty():
             merged_queue.enqueue(right.dequeue())
+            metrics_manager.increment_operations(3)
+
+        metrics_manager.increment_operations(1)
 
         return merged_queue

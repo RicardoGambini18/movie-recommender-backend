@@ -36,22 +36,28 @@ class StackSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         sorted_data = Stack[dict]()
         aux_stack = self._data.copy()
         item_count = self._data.size()
+        metrics_manager.increment_operations(3)
 
         while not aux_stack.is_empty():
             item = aux_stack.pop()
             item_value = self._value_getter(item)
+            metrics_manager.increment_operations(3)
 
             while not sorted_data.is_empty():
                 top = sorted_data.peek()
                 top_value = self._value_getter(top)
-                metrics_manager.increment_comparisons()
+                metrics_manager.increment_operations(4)
 
                 if top_value > item_value:
                     aux_stack.push(sorted_data.pop())
+                    metrics_manager.increment_operations(2)
                 else:
                     break
 
             sorted_data.push(item)
+            metrics_manager.increment_operations(2)
+
+        metrics_manager.increment_operations(1)
 
         metrics_manager.end()
 

@@ -9,11 +9,11 @@ from core.constants import WARMUP_ITERATIONS
 class AlgorithmMetrics:
     time: int
     memory: int
-    comparisons: int
+    operations: int
 
 
 class AlgorithmMetricsManager:
-    _comparisons: int = 0
+    _operations: int = 0
     _start_time: int = 0
     _start_memory: int = 0
     _end_time: int = 0
@@ -24,11 +24,11 @@ class AlgorithmMetricsManager:
         for i in range(WARMUP_ITERATIONS):
             sum(range(i))
 
-    def increment_comparisons(self):
-        self._comparisons += 1
+    def increment_operations(self, count: int = 1):
+        self._operations += count
 
     def reset(self):
-        self._comparisons = 0
+        self._operations = 0
         self._start_time = 0
         self._start_memory = 0
         self._end_time = 0
@@ -66,5 +66,5 @@ class AlgorithmMetricsManager:
         return AlgorithmMetrics(
             time=self._end_time - self._start_time,
             memory=self._end_memory - self._start_memory,
-            comparisons=self._comparisons
+            operations=self._operations
         )
