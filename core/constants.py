@@ -11,8 +11,8 @@ INFO = {
         'sort_algorithms': {
             'BUBBLE_SORT': {
                 'key': 'bubble_sort',
-                'name': 'Ordenamiento burbuja (Bubble sort)',
-                'description': 'Algoritmo basado en comparaciones adyacentes. En cada pasada recorre el arreglo e intercambia pares fuera de orden, haciendo que el elemento extremo “burbujee” hasta su posición final. Puede detenerse antes si en una pasada no se realizan intercambios. Es estable y sencillo, pero poco eficiente para tamaños grandes.',
+                'name': 'Ordenamiento de burbuja (Bubble sort)',
+                'description': 'Algoritmo basado en comparaciones adyacentes. En cada pasada recorre el arreglo e intercambia pares fuera de orden, haciendo que el elemento extremo “burbujee” hasta su posición final. Esta implementación optimizada se detiene si no hay intercambios en una pasada.',
                 'best_time_complexity': r'O(n)',
                 'average_time_complexity': r'O(n^2)',
                 'worst_time_complexity': r'O(n^2)',
@@ -21,7 +21,7 @@ INFO = {
             'SELECTION_SORT': {
                 'key': 'selection_sort',
                 'name': 'Ordenamiento por selección (Selection sort)',
-                'description': 'En cada iteración localiza el mínimo (o máximo) del segmento no ordenado y lo coloca en su posición final mediante un intercambio. Reduce intercambios, pero realiza muchas comparaciones. No es estable en su forma básica.',
+                'description': 'En cada iteración localiza el mínimo del segmento no ordenado y lo coloca en su posición final mediante un intercambio. Minimiza el número de escrituras en memoria, aunque realiza muchas comparaciones. No es estable en su forma básica.',
                 'best_time_complexity': r'O(n^2)',
                 'average_time_complexity': r'O(n^2)',
                 'worst_time_complexity': r'O(n^2)',
@@ -30,7 +30,7 @@ INFO = {
             'INSERTION_SORT': {
                 'key': 'insertion_sort',
                 'name': 'Ordenamiento por inserción (Insertion sort)',
-                'description': 'Construye gradualmente un subarreglo ordenado insertando cada elemento en su posición correcta hacia la izquierda mediante desplazamientos. Es estable y especialmente eficaz en arreglos pequeños o datos casi ordenados.',
+                'description': 'Construye gradualmente un subarreglo ordenado insertando cada elemento en su posición correcta hacia la izquierda. Es estable y muy eficaz en arreglos pequeños o datos casi ordenados, simulando cómo se ordenan cartas en la mano.',
                 'best_time_complexity': r'O(n)',
                 'average_time_complexity': r'O(n^2)',
                 'worst_time_complexity': r'O(n^2)',
@@ -38,8 +38,8 @@ INFO = {
             },
             'MERGE_SORT': {
                 'key': 'merge_sort',
-                'name': 'Ordenamiento por mezcla (Merge sort)',
-                'description': 'Estrategia de divide y vencerás: divide el arreglo en mitades, ordena cada mitad de forma recursiva y luego fusiona las sublistas ordenadas. Ofrece rendimiento garantizado y es estable, a costa de memoria adicional para la fusión.',
+                'name': 'Ordenamiento por fusión (Merge sort)',
+                'description': 'Estrategia de divide y vencerás: divide el arreglo en mitades, ordena recursivamente y luego aplica una fusión ordenada de las sublistas. Garantiza un rendimiento estable O(n log n) incluso en el peor caso, a costa de memoria adicional.',
                 'best_time_complexity': r'O(n\log n)',
                 'average_time_complexity': r'O(n\log n)',
                 'worst_time_complexity': r'O(n\log n)',
@@ -48,7 +48,7 @@ INFO = {
             'QUICK_SORT': {
                 'key': 'quick_sort',
                 'name': 'Ordenamiento rápido (Quick sort)',
-                'description': 'Selecciona un pivote, particiona el arreglo en elementos menores y mayores que el pivote y ordena recursivamente cada partición. Presenta excelente rendimiento promedio; el peor caso se mitiga con elección de pivote aleatoria o mediana de tres. No es estable en su implementación clásica.',
+                'description': 'Selecciona un pivote y particiona el arreglo en elementos menores y mayores a este, ordenando recursivamente. Es uno de los algoritmos más rápidos en la práctica (promedio), aunque su peor caso es cuadrático si el pivote no es ideal.',
                 'best_time_complexity': r'O(n\log n)',
                 'average_time_complexity': r'O(n\log n)',
                 'worst_time_complexity': r'O(n^2)',
@@ -60,7 +60,7 @@ INFO = {
                 'key': 'linear_search',
                 'name': 'Búsqueda lineal (Linear search)',
                 'needs_sort': False,
-                'description': 'Explora secuencialmente los elementos comparando con el objetivo hasta hallarlo o agotar el arreglo. No requiere orden previo y funciona con cualquier tipo de dato comparable.',
+                'description': 'Realiza un recorrido secuencial comparando cada elemento con el objetivo. Es el único método viable para datos desordenados. Su simplicidad lo hace útil para arreglos pequeños.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(n)',
                 'worst_time_complexity': r'O(n)',
@@ -68,9 +68,9 @@ INFO = {
             },
             'BINARY_SEARCH': {
                 'key': 'binary_search',
-                'name': 'Búsqueda binaria (Binary search, versión iterativa)',
+                'name': 'Búsqueda binaria (Binary search)',
                 'needs_sort': True,
-                'description': 'Opera sobre un arreglo ordenado. En cada paso examina el elemento central y descarta la mitad que no puede contener el objetivo, repitiendo hasta encontrarlo o vaciar el rango. La versión iterativa evita costo de pila adicional.',
+                'description': 'Requiere arreglo ordenado. Divide repetidamente el intervalo de búsqueda a la mitad comparando con el elemento central. Esta implementación es iterativa para optimizar el uso de memoria (stack).',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(\log n)',
                 'worst_time_complexity': r'O(\log n)',
@@ -80,7 +80,7 @@ INFO = {
                 'key': 'jump_search',
                 'name': 'Búsqueda por saltos (Jump search)',
                 'needs_sort': True,
-                'description': 'Requiere arreglo ordenado. Avanza en bloques de tamaño aproximadamente raíz de n hasta sobrepasar el posible rango del objetivo y después realiza una búsqueda lineal dentro del bloque identificado.',
+                'description': 'Requiere arreglo ordenado. Salta un bloque fijo de elementos (raíz de n) hasta superar el objetivo, y luego realiza una búsqueda lineal en el bloque anterior. Es un punto medio entre búsqueda lineal y binaria.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(\sqrt{n})',
                 'worst_time_complexity': r'O(\sqrt{n})',
@@ -90,7 +90,7 @@ INFO = {
                 'key': 'exponential_search',
                 'name': 'Búsqueda exponencial (Exponential search)',
                 'needs_sort': True,
-                'description': 'Requiere arreglo ordenado. Amplía exponencialmente el índice de búsqueda para acotar rápidamente un intervalo candidato y luego ejecuta búsqueda binaria dentro de ese intervalo.',
+                'description': 'Requiere arreglo ordenado. Útil para listas infinitas o de tamaño desconocido. Encuentra el rango donde reside el elemento creciendo exponencialmente y luego aplica búsqueda binaria.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(\log n)',
                 'worst_time_complexity': r'O(\log n)',
@@ -100,7 +100,7 @@ INFO = {
                 'key': 'interpolation_search',
                 'name': 'Búsqueda por interpolación (Interpolation search)',
                 'needs_sort': True,
-                'description': 'Requiere arreglo ordenado por una clave numérica aproximadamente uniforme. Estima la posición del objetivo mediante interpolación lineal y refina iterativamente. En distribuciones muy sesgadas su desempeño puede degradarse significativamente.',
+                'description': 'Requiere arreglo ordenado y distribución uniforme. Estima la posición probable del objetivo usando una fórmula de interpolación (como buscar en un diccionario telefónico). Muy rápido en datos uniformes, pero se degrada a O(n) en peores casos.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(\log\log n)',
                 'worst_time_complexity': r'O(n)',
@@ -111,12 +111,12 @@ INFO = {
     'STACK': {
         'key': 'stack',
         'name': 'Pila',
-        'description': 'Estructura de datos lineal con comportamiento LIFO (Last In, First Out). Solo permite acceso al elemento de la cima mediante operaciones push (insertar) y pop (extraer). Útil para algoritmos que requieren procesamiento en orden inverso o gestión de estados.',
+        'description': 'Estructura de datos lineal que sigue el principio LIFO (Last In, First Out). El acceso está restringido estrictamente a la cima (tope). Es fundamental para la gestión de memoria (call stack), recursividad y evaluación de expresiones.',
         'sort_algorithms': {
             'SORT_STACK': {
                 'key': 'sort_stack',
-                'name': 'Ordenamiento con Pila Auxiliar (Sort Stack)',
-                'description': 'Algoritmo iterativo que ordena una pila usando una pila auxiliar. Extrae elementos de la pila original y los inserta en la pila auxiliar en orden, luego transfiere de vuelta para obtener el ordenamiento final. Respeta estrictamente las operaciones LIFO de la estructura.',
+                'name': 'Ordenamiento de Pila (Sort Stack)',
+                'description': 'Algoritmo iterativo que ordena una pila utilizando únicamente una pila auxiliar y operaciones push/pop/peek. Simula una inserción ordenada moviendo elementos entre las dos pilas. Respeta estrictamente la restricción LIFO.',
                 'best_time_complexity': r'O(n^2)',
                 'average_time_complexity': r'O(n^2)',
                 'worst_time_complexity': r'O(n^2)',
@@ -126,9 +126,9 @@ INFO = {
         'search_algorithms': {
             'LINEAR_SEARCH': {
                 'key': 'linear_search',
-                'name': 'Búsqueda Lineal con Restauración',
+                'name': 'Búsqueda lineal con restauración (Linear search with restoration)',
                 'needs_sort': False,
-                'description': 'Recorre la pila extrayendo elementos de la cima y comparándolos con el objetivo. Usa una pila auxiliar para preservar el estado original y restaura todos los elementos después de la búsqueda. Respeta estrictamente las operaciones LIFO.',
+                'description': 'Busca un elemento desapilando secuencialmente (pop) y guardando los datos en una pila auxiliar. Al finalizar, restaura los elementos a la pila original para no perder información. Costosa pero necesaria dada la restricción LIFO.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(n)',
                 'worst_time_complexity': r'O(n)',
@@ -139,12 +139,12 @@ INFO = {
     'QUEUE': {
         'key': 'queue',
         'name': 'Cola',
-        'description': 'Estructura de datos lineal con comportamiento FIFO (First In, First Out). Solo permite acceso al elemento del frente mediante operaciones enqueue (insertar al final) y dequeue (extraer del frente). Útil para algoritmos que requieren procesamiento en orden de llegada o simulaciones.',
+        'description': 'Estructura de datos lineal que sigue el principio FIFO (First In, First Out). Las inserciones ocurren por el final y las extracciones por el frente. Modela procesos de atención en orden de llegada.',
         'sort_algorithms': {
             'SELECTION_SORT': {
                 'key': 'selection_sort',
                 'name': 'Ordenamiento por selección (Selection sort)',
-                'description': 'Algoritmo iterativo que ordena una cola rotándola para encontrar el valor mínimo en cada iteración. Extrae el mínimo y lo coloca en una cola ordenada. Complejidad cuadrática pero respeta estrictamente las operaciones FIFO de la estructura.',
+                'description': 'Ordena la cola rotando todos los elementos para encontrar el mínimo en cada pasada y moverlo a una estructura ordenada. Implementación iterativa que respeta el acceso FIFO sin usar acceso aleatorio.',
                 'best_time_complexity': r'O(n^2)',
                 'average_time_complexity': r'O(n^2)',
                 'worst_time_complexity': r'O(n^2)',
@@ -152,8 +152,8 @@ INFO = {
             },
             'MERGE_SORT': {
                 'key': 'merge_sort',
-                'name': 'Ordenamiento por mezcla (Merge sort)',
-                'description': 'Estrategia de divide y vencerás adaptada para colas. Divide la cola en dos mitades, ordena cada mitad recursivamente y luego fusiona las colas ordenadas comparando los frentes. Respeta estrictamente las operaciones FIFO y ofrece rendimiento garantizado.',
+                'name': 'Ordenamiento por fusión (Merge sort)',
+                'description': 'Adapta el algoritmo divide y vencerás a estructuras secuenciales. Divide la cola en mitades, ordena recursivamente y fusiona comparando los frentes. Es la opción más eficiente para estructuras enlazadas como las colas.',
                 'best_time_complexity': r'O(n\log n)',
                 'average_time_complexity': r'O(n\log n)',
                 'worst_time_complexity': r'O(n\log n)',
@@ -163,9 +163,9 @@ INFO = {
         'search_algorithms': {
             'LINEAR_SEARCH': {
                 'key': 'linear_search',
-                'name': 'Búsqueda Lineal por Rotación',
+                'name': 'Búsqueda lineal por rotación (Linear search by rotation)',
                 'needs_sort': False,
-                'description': 'Recorre la cola rotándola completamente: extrae elementos del frente, los compara con el objetivo y los vuelve a insertar al final. La cola vuelve automáticamente a su estado original sin necesidad de estructuras auxiliares. Respeta estrictamente las operaciones FIFO.',
+                'description': 'Busca un elemento procesando el frente (dequeue) y reinsertándolo inmediatamente al final (enqueue). Realiza una rotación completa para garantizar que la cola regrese a su estado original. Operación O(n) obligatoria por la naturaleza FIFO.',
                 'best_time_complexity': r'O(1)',
                 'average_time_complexity': r'O(n)',
                 'worst_time_complexity': r'O(n)',
