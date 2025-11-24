@@ -1,6 +1,6 @@
 # Algolab - Python Server
 
-Algolab es un laboratorio interactivo enfocado en comparar algoritmos de búsqueda y ordenamiento, midiendo tiempo de ejecución, uso de memoria y número de comparaciones para cada implementación disponible. Esta es la versión Python del servidor.
+Algolab es un laboratorio interactivo enfocado en comparar algoritmos de búsqueda y ordenamiento, midiendo tiempo de ejecución, uso de memoria, número de operaciones y número de iteraciones para cada implementación disponible. Esta es la versión Python del servidor.
 
 ## 🎯 Configuración Local Automática
 
@@ -21,6 +21,15 @@ Al abrir la interfaz local, se debe seleccionar cualquier usuario disponible e i
 **Nota:** La primera ejecución puede tardar unos minutos mientras se crea el entorno virtual, se copian las variables de entorno y se descargan los recursos. Las ejecuciones posteriores serán más rápidas porque reutilizan todo lo configurado localmente. Si se desea usar otra base de datos, basta con editar el `.env` generado después de la primera ejecución.
 
 > **⚠️ Nota Importante:** Si no se necesita ejecutar la aplicación localmente, se puede utilizar la versión desplegada en **https://algolab-utp.vercel.app**.
+
+## 📊 Métricas Registradas
+
+Cada ejecución de un algoritmo reporta las siguientes métricas para facilitar el análisis comparativo:
+
+- **Tiempo (ns):** Duración total medida con `time.perf_counter_ns`.
+- **Memoria (bytes):** Diferencia entre el pico y el uso inicial registrado con `tracemalloc`.
+- **Operaciones:** Conteo acumulado de comparaciones, asignaciones y operaciones matemáticas relevantes dentro del algoritmo.
+- **Iteraciones:** Total de ciclos ejecutados en bucles y llamadas recursivas, útil para dimensionar el esfuerzo estructural del algoritmo.
 
 ## 📋 Requerimientos del Sistema
 
