@@ -90,6 +90,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             metrics_manager.increment_operations(2)
 
             for j in range(n - i - 1):
+                metrics_manager.increment_iterations()
                 a = sorted_data.get_item(j)
                 b = sorted_data.get_item(j + 1)
                 a_value = self._value_getter(a)
@@ -132,6 +133,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             metrics_manager.increment_operations(4)
 
             for j in range(i + 1, n):
+                metrics_manager.increment_iterations()
                 value = self._value_getter(sorted_data.get_item(j))
                 metrics_manager.increment_operations(4)
 
@@ -174,6 +176,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             metrics_manager.increment_operations(6)
 
             while j >= 0 and previous_item_value > item_value:
+                metrics_manager.increment_iterations()
                 sorted_data.set_item(j + 1, previous_item)
 
                 j -= 1
@@ -236,6 +239,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(2)
 
         while i < left.size() and j < right.size():
+            metrics_manager.increment_iterations()
             a = left.get_item(i)
             b = right.get_item(j)
             a_value = self._value_getter(a)
@@ -300,6 +304,7 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(6)
 
         for i in range(data.size()):
+            metrics_manager.increment_iterations()
             x = data.get_item(i)
             x_value = self._value_getter(x)
             metrics_manager.increment_operations(4)

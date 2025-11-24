@@ -91,6 +91,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.start()
 
         for index in range(self._data.size()):
+            metrics_manager.increment_iterations()
             item = self._data.get_item(index)
             item_value = self._value_getter(item)
             metrics_manager.increment_operations(4)
@@ -127,6 +128,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(2)
 
         while low <= high:
+            metrics_manager.increment_iterations()
             mid = (low + high) // 2
             item = self._data.get_item(mid)
             item_value = self._value_getter(item)
@@ -195,6 +197,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(2)
 
         for step in range(steps):
+            metrics_manager.increment_iterations()
             current_start = step_size * step
             current_end = min(current_start + step_size, n)
             current_item = self._data.get_item(current_end - 1)
@@ -222,6 +225,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             )
 
         for index in range(target_start, target_end):
+            metrics_manager.increment_iterations()
             item = self._data.get_item(index)
             item_value = self._value_getter(item)
             metrics_manager.increment_operations(4)
@@ -288,6 +292,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(1)
 
         while i < n:
+            metrics_manager.increment_iterations()
             current_item = self._data.get_item(i)
             current_value = self._value_getter(current_item)
             metrics_manager.increment_operations(4)
@@ -317,6 +322,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         )
 
     def _recursive_binary_search(self, data, left, right, value, metrics_manager):
+        metrics_manager.increment_iterations()
         metrics_manager.increment_operations(1)
 
         if right >= left:
@@ -370,6 +376,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         )
 
     def _recursive_interpolation_search(self, data, left, right, value, metrics_manager):
+        metrics_manager.increment_iterations()
         metrics_manager.increment_operations(1)
 
         if left <= right:
@@ -387,6 +394,7 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
 
             if left_value == right_value:
                 for i in range(left, right + 1):
+                    metrics_manager.increment_iterations()
                     item = data.get_item(i)
                     item_value = self._value_getter(item)
 

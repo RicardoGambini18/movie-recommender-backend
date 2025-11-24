@@ -54,6 +54,7 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             metrics_manager.increment_operations(4)
 
             for __ in range(aux_queue_size):
+                metrics_manager.increment_iterations()
                 item = aux_queue.dequeue()
                 item_value = self._value_getter(item)
                 metrics_manager.increment_operations(4)
@@ -126,10 +127,12 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(3)
 
         for _ in range(mid):
+            metrics_manager.increment_iterations()
             left.enqueue(queue.dequeue())
             metrics_manager.increment_operations(3)
 
         while not queue.is_empty():
+            metrics_manager.increment_iterations()
             right.enqueue(queue.dequeue())
             metrics_manager.increment_operations(3)
 
@@ -145,6 +148,7 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(1)
 
         while not left.is_empty() and not right.is_empty():
+            metrics_manager.increment_iterations()
             a = left.peek()
             b = right.peek()
             a_value = self._value_getter(a)
@@ -161,12 +165,14 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(2)
 
         while not left.is_empty():
+            metrics_manager.increment_iterations()
             merged_queue.enqueue(left.dequeue())
             metrics_manager.increment_operations(3)
 
         metrics_manager.increment_operations(1)
 
         while not right.is_empty():
+            metrics_manager.increment_iterations()
             merged_queue.enqueue(right.dequeue())
             metrics_manager.increment_operations(3)
 

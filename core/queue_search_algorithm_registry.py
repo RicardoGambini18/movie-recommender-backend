@@ -39,6 +39,7 @@ class QueueSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(2)
 
         for _ in range(item_count):
+            metrics_manager.increment_iterations()
             item = self._data.dequeue()
             metrics_manager.increment_operations(3)
 

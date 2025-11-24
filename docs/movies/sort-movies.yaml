@@ -74,6 +74,9 @@ definitions:
       operations:
         type: integer
         description: Cantidad de operaciones realizadas
+      iterations:
+        type: integer
+        description: Cantidad de iteraciones realizadas
   Error:
     type: object
     properties:

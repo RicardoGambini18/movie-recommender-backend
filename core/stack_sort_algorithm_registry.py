@@ -44,6 +44,7 @@ class StackSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             metrics_manager.increment_operations(3)
 
             while not sorted_data.is_empty():
+                metrics_manager.increment_iterations()
                 top = sorted_data.peek()
                 top_value = self._value_getter(top)
                 metrics_manager.increment_operations(4)

@@ -39,6 +39,7 @@ class StackSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(2)
 
         while not self._data.is_empty():
+            metrics_manager.increment_iterations()
             item = self._data.pop()
             aux_stack.push(item)
             metrics_manager.increment_operations(3)
@@ -55,6 +56,7 @@ class StackSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
         metrics_manager.increment_operations(1)
 
         while not aux_stack.is_empty():
+            metrics_manager.increment_iterations()
             item = aux_stack.pop()
             self._data.push(item)
             metrics_manager.increment_operations(3)
