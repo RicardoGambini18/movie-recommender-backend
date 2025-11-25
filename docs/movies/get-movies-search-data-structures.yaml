@@ -52,18 +52,18 @@ definitions:
       needs_sort:
         type: boolean
         description: Indica si el algoritmo necesita que la estructura de datos esté ordenada
+      time_complexity:
+        type: string
+        description: Complejidad temporal del algoritmo en notación Big O
+      time_complexity_level:
+        type: string
+        description: Nivel de complejidad temporal del algoritmo
       space_complexity:
         type: string
         description: Complejidad espacial del algoritmo en notación Big O
-      best_time_complexity:
+      space_complexity_level:
         type: string
-        description: Complejidad temporal del algoritmo en notación Big O en el mejor caso
-      worst_time_complexity:
-        type: string
-        description: Complejidad temporal del algoritmo en notación Big O en el peor caso
-      average_time_complexity:
-        type: string
-        description: Complejidad temporal del algoritmo en notación Big O en el caso promedio
+        description: Nivel de complejidad espacial del algoritmo
   Error:
     type: object
     properties:

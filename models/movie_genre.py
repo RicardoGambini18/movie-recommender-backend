@@ -22,8 +22,3 @@ class MovieGenre(db.Model):
             'movie_id': self.movie_id,
             'genre_id': self.genre_id
         }
-
-    @staticmethod
-    def bulk_insert(movie_genres: list[dict]):
-        db.session.bulk_insert_mappings(MovieGenre, movie_genres)
-        db.session.commit()

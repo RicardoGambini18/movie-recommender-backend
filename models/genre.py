@@ -21,8 +21,3 @@ class Genre(db.Model):
             'name': self.name,
             'name_es': self.name_es
         }
-
-    @staticmethod
-    def bulk_insert(genres: list[dict]):
-        db.session.bulk_insert_mappings(Genre, genres)
-        db.session.commit()

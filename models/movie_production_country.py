@@ -22,9 +22,3 @@ class MovieProductionCountry(db.Model):
             'movie_id': self.movie_id,
             'country_id': self.country_id
         }
-
-    @staticmethod
-    def bulk_insert(movie_production_countries: list[dict]):
-        db.session.bulk_insert_mappings(
-            MovieProductionCountry, movie_production_countries)
-        db.session.commit()

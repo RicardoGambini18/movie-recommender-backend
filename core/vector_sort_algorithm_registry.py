@@ -21,58 +21,46 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     key=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['key'],
                     name=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['name'],
                     description=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['description'],
+                    time_complexity=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['time_complexity'],
                     space_complexity=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['space_complexity'],
-                    best_time_complexity=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['BUBBLE_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['BUBBLE_SORT']['average_time_complexity'],
+                    time_complexity_level=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['time_complexity_level'],
+                    space_complexity_level=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['space_complexity_level'],
                 ),
                 AlgorithmOption(
                     key=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['key'],
                     name=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['name'],
                     description=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['description'],
+                    time_complexity=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['time_complexity'],
                     space_complexity=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['space_complexity'],
-                    best_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['SELECTION_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['SELECTION_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['SELECTION_SORT']['average_time_complexity'],
+                    time_complexity_level=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['time_complexity_level'],
+                    space_complexity_level=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['space_complexity_level'],
                 ),
                 AlgorithmOption(
                     key=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['key'],
                     name=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['name'],
                     description=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['description'],
+                    time_complexity=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['time_complexity'],
                     space_complexity=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['space_complexity'],
-                    best_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['INSERTION_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['INSERTION_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['INSERTION_SORT']['average_time_complexity'],
+                    time_complexity_level=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['time_complexity_level'],
+                    space_complexity_level=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['space_complexity_level'],
                 ),
                 AlgorithmOption(
                     key=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['key'],
                     name=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['name'],
                     description=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['description'],
+                    time_complexity=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['time_complexity'],
                     space_complexity=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['space_complexity'],
-                    best_time_complexity=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['MERGE_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['MERGE_SORT']['average_time_complexity'],
+                    time_complexity_level=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['time_complexity_level'],
+                    space_complexity_level=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['space_complexity_level'],
                 ),
                 AlgorithmOption(
                     key=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['key'],
                     name=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['name'],
                     description=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['description'],
+                    time_complexity=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['time_complexity'],
                     space_complexity=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['space_complexity'],
-                    best_time_complexity=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['QUICK_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['VECTOR'][
-                        'sort_algorithms']['QUICK_SORT']['average_time_complexity'],
+                    time_complexity_level=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['time_complexity_level'],
+                    space_complexity_level=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['space_complexity_level'],
                 ),
             ]
         )
@@ -114,6 +102,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['name'],
+            time_complexity=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['time_complexity'],
+            time_complexity_level=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['time_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -152,6 +142,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['name'],
+            time_complexity=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['time_complexity'],
+            time_complexity_level=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['time_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -193,6 +185,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['name'],
+            time_complexity=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['time_complexity'],
+            time_complexity_level=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['time_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -211,6 +205,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['name'],
+            time_complexity=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['time_complexity'],
+            time_complexity_level=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['time_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -283,6 +279,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['VECTOR']['name'],
             algorithm=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['name'],
+            time_complexity=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['time_complexity'],
+            time_complexity_level=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['time_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()

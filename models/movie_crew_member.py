@@ -22,8 +22,3 @@ class MovieCrewMember(db.Model):
             'movie_id': self.movie_id,
             'crew_member_id': self.crew_member_id
         }
-
-    @staticmethod
-    def bulk_insert(movie_crew_members: list[dict]):
-        db.session.bulk_insert_mappings(MovieCrewMember, movie_crew_members)
-        db.session.commit()

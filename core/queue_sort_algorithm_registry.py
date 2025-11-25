@@ -21,19 +21,19 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     key=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['key'],
                     name=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['name'],
                     description=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['description'],
+                    time_complexity=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['time_complexity'],
                     space_complexity=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['space_complexity'],
-                    best_time_complexity=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['average_time_complexity'],
+                    time_complexity_level=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['time_complexity_level'],
+                    space_complexity_level=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['space_complexity_level'],
                 ),
                 AlgorithmOption(
                     key=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['key'],
                     name=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['name'],
                     description=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['description'],
+                    time_complexity=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['time_complexity'],
                     space_complexity=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['space_complexity'],
-                    best_time_complexity=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['best_time_complexity'],
-                    worst_time_complexity=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['worst_time_complexity'],
-                    average_time_complexity=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['average_time_complexity'],
+                    time_complexity_level=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['time_complexity_level'],
+                    space_complexity_level=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['space_complexity_level'],
                 ),
             ]
         )
@@ -90,6 +90,8 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['QUEUE']['name'],
             algorithm=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['name'],
+            time_complexity=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['time_complexity'],
+            time_complexity_level=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['time_complexity_level'],
             item_count=item_count,
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -108,6 +110,8 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['QUEUE']['name'],
             algorithm=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['name'],
+            time_complexity=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['time_complexity'],
+            time_complexity_level=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['time_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()

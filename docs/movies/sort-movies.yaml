@@ -53,6 +53,12 @@ definitions:
       item_count:
         type: integer
         description: Cantidad de elementos en la estructura de datos
+      time_complexity:
+        type: string
+        description: Complejidad temporal del algoritmo en notación Big O
+      time_complexity_level:
+        type: string
+        description: Nivel de complejidad temporal del algoritmo
       sorted_data:
         $ref: '#/definitions/SortedData'
       metrics:

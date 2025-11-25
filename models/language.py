@@ -21,8 +21,3 @@ class Language(db.Model):
             'iso6391': self.iso6391,
             'name': self.name
         }
-
-    @staticmethod
-    def bulk_insert(languages: list[dict]):
-        db.session.bulk_insert_mappings(Language, languages)
-        db.session.commit()

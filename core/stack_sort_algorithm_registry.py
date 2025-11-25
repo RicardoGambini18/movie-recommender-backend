@@ -21,10 +21,10 @@ class StackSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     key=INFO['STACK']['sort_algorithms']['SORT_STACK']['key'],
                     name=INFO['STACK']['sort_algorithms']['SORT_STACK']['name'],
                     description=INFO['STACK']['sort_algorithms']['SORT_STACK']['description'],
+                    time_complexity=INFO['STACK']['sort_algorithms']['SORT_STACK']['time_complexity'],
                     space_complexity=INFO['STACK']['sort_algorithms']['SORT_STACK']['space_complexity'],
-                    best_time_complexity=INFO['STACK']['sort_algorithms']['SORT_STACK']['best_time_complexity'],
-                    worst_time_complexity=INFO['STACK']['sort_algorithms']['SORT_STACK']['worst_time_complexity'],
-                    average_time_complexity=INFO['STACK']['sort_algorithms']['SORT_STACK']['average_time_complexity'],
+                    time_complexity_level=INFO['STACK']['sort_algorithms']['SORT_STACK']['time_complexity_level'],
+                    space_complexity_level=INFO['STACK']['sort_algorithms']['SORT_STACK']['space_complexity_level'],
                 ),
             ]
         )
@@ -65,6 +65,8 @@ class StackSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
         return SortResult(
             data_structure=INFO['STACK']['name'],
             algorithm=INFO['STACK']['sort_algorithms']['SORT_STACK']['name'],
+            time_complexity=INFO['STACK']['sort_algorithms']['SORT_STACK']['time_complexity'],
+            time_complexity_level=INFO['STACK']['sort_algorithms']['SORT_STACK']['time_complexity_level'],
             item_count=item_count,
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()

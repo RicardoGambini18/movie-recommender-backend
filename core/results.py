@@ -7,6 +7,8 @@ class AlgorithmResult:
     data_structure: str
     algorithm: str
     item_count: int
+    time_complexity: str
+    time_complexity_level: str
     metrics: AlgorithmMetrics
 
 

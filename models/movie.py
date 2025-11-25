@@ -67,8 +67,3 @@ class Movie(db.Model):
             'original_language_id': self.original_language_id,
             'collection_id': self.collection_id
         }
-
-    @staticmethod
-    def bulk_insert(movies: list[dict]):
-        db.session.bulk_insert_mappings(Movie, movies)
-        db.session.commit()

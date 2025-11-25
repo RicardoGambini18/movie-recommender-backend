@@ -23,8 +23,3 @@ class Country(db.Model):
             'name': self.name,
             'name_es': self.name_es
         }
-
-    @staticmethod
-    def bulk_insert(countries: list[dict]):
-        db.session.bulk_insert_mappings(Country, countries)
-        db.session.commit()

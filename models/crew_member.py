@@ -30,8 +30,3 @@ class CrewMember(db.Model):
             'job': self.job,
             'job_es': self.job_es
         }
-
-    @staticmethod
-    def bulk_insert(crew_members: list[dict]):
-        db.session.bulk_insert_mappings(CrewMember, crew_members)
-        db.session.commit()

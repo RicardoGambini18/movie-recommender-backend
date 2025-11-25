@@ -22,10 +22,10 @@ class StackSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     name=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['name'],
                     needs_sort=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
                     description=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['description'],
+                    time_complexity=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['time_complexity'],
                     space_complexity=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['space_complexity'],
-                    best_time_complexity=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['best_time_complexity'],
-                    worst_time_complexity=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['worst_time_complexity'],
-                    average_time_complexity=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['average_time_complexity'],
+                    time_complexity_level=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['time_complexity_level'],
+                    space_complexity_level=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['space_complexity_level'],
                 ),
             ]
         )
@@ -69,6 +69,8 @@ class StackSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             data_structure=INFO['STACK']['name'],
             algorithm=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['name'],
             needs_sort=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
+            time_complexity=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['time_complexity'],
+            time_complexity_level=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['time_complexity_level'],
             item_found=item_found,
             item_count=self._data.size(),
             metrics=metrics_manager.get_metrics()

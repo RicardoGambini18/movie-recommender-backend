@@ -26,8 +26,3 @@ class Rating(db.Model):
             'rating': self.rating,
             'timestamp': self.timestamp.isoformat()
         }
-
-    @staticmethod
-    def bulk_insert(ratings: list[dict]):
-        db.session.bulk_insert_mappings(Rating, ratings)
-        db.session.commit()

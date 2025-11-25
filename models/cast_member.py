@@ -30,8 +30,3 @@ class CastMember(db.Model):
             'character_es': self.character_es,
             'order': self.order
         }
-
-    @staticmethod
-    def bulk_insert(cast_members: list[dict]):
-        db.session.bulk_insert_mappings(CastMember, cast_members)
-        db.session.commit()

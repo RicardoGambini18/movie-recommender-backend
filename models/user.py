@@ -23,8 +23,3 @@ class User(db.Model):
             'email': self.email,
             'image': self.image
         }
-
-    @staticmethod
-    def bulk_insert(users: list[dict]):
-        db.session.bulk_insert_mappings(User, users)
-        db.session.commit()

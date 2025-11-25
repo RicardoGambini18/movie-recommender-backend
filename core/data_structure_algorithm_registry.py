@@ -8,10 +8,10 @@ class AlgorithmOption():
     key: str
     name: str
     description: str
+    time_complexity: str
+    time_complexity_level: str
     space_complexity: str
-    best_time_complexity: str
-    worst_time_complexity: str
-    average_time_complexity: str
+    space_complexity_level: str
 
 
 @dataclass
