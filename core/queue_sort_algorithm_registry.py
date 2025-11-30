@@ -92,6 +92,8 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             algorithm=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['name'],
             time_complexity=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['time_complexity'],
             time_complexity_level=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['time_complexity_level'],
+            space_complexity=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['space_complexity'],
+            space_complexity_level=INFO['QUEUE']['sort_algorithms']['SELECTION_SORT']['space_complexity_level'],
             item_count=item_count,
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -112,6 +114,8 @@ class QueueSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             algorithm=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['name'],
             time_complexity=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['time_complexity'],
             time_complexity_level=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['time_complexity_level'],
+            space_complexity=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['space_complexity'],
+            space_complexity_level=INFO['QUEUE']['sort_algorithms']['MERGE_SORT']['space_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()

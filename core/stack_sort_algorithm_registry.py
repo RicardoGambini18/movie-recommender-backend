@@ -67,6 +67,8 @@ class StackSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             algorithm=INFO['STACK']['sort_algorithms']['SORT_STACK']['name'],
             time_complexity=INFO['STACK']['sort_algorithms']['SORT_STACK']['time_complexity'],
             time_complexity_level=INFO['STACK']['sort_algorithms']['SORT_STACK']['time_complexity_level'],
+            space_complexity=INFO['STACK']['sort_algorithms']['SORT_STACK']['space_complexity'],
+            space_complexity_level=INFO['STACK']['sort_algorithms']['SORT_STACK']['space_complexity_level'],
             item_count=item_count,
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()

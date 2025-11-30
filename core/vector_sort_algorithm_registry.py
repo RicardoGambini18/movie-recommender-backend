@@ -104,6 +104,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             algorithm=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['name'],
             time_complexity=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['sort_algorithms']['BUBBLE_SORT']['space_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -144,6 +146,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             algorithm=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['name'],
             time_complexity=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['sort_algorithms']['SELECTION_SORT']['space_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -187,6 +191,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             algorithm=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['name'],
             time_complexity=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['sort_algorithms']['INSERTION_SORT']['space_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -207,6 +213,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             algorithm=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['name'],
             time_complexity=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['sort_algorithms']['MERGE_SORT']['space_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()
@@ -281,6 +289,8 @@ class VectorSortAlgorithmRegistry(DataStructureAlgorithmRegistry):
             algorithm=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['name'],
             time_complexity=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['sort_algorithms']['QUICK_SORT']['space_complexity_level'],
             item_count=self._data.size(),
             sorted_data=sorted_data.to_list(),
             metrics=metrics_manager.get_metrics()

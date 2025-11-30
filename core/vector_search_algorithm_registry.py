@@ -100,6 +100,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     needs_sort=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
                     time_complexity=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['time_complexity'],
                     time_complexity_level=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['time_complexity_level'],
+                    space_complexity=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['space_complexity'],
+                    space_complexity_level=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['space_complexity_level'],
                     item_count=self._data.size(),
                     item_found=item,
                     metrics=metrics_manager.get_metrics()
@@ -113,6 +115,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
             time_complexity=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['search_algorithms']['LINEAR_SEARCH']['space_complexity_level'],
             item_count=self._data.size(),
             item_found=None,
             metrics=metrics_manager.get_metrics()
@@ -142,6 +146,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     needs_sort=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
                     time_complexity=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['time_complexity'],
                     time_complexity_level=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['time_complexity_level'],
+                    space_complexity=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['space_complexity'],
+                    space_complexity_level=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['space_complexity_level'],
                     item_count=self._data.size(),
                     item_found=item,
                     metrics=metrics_manager.get_metrics()
@@ -163,6 +169,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['needs_sort'],
             time_complexity=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['search_algorithms']['BINARY_SEARCH']['space_complexity_level'],
             item_count=self._data.size(),
             item_found=None,
             metrics=metrics_manager.get_metrics()
@@ -184,6 +192,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                 time_complexity=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['time_complexity'],
                 time_complexity_level=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['time_complexity_level'],
+                space_complexity=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['space_complexity'],
+                space_complexity_level=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['space_complexity_level'],
                 item_count=self._data.size(),
                 item_found=None,
                 metrics=metrics_manager.get_metrics()
@@ -226,6 +236,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                 time_complexity=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['time_complexity'],
                 time_complexity_level=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['time_complexity_level'],
+                space_complexity=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['space_complexity'],
+                space_complexity_level=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['space_complexity_level'],
                 item_count=self._data.size(),
                 item_found=None,
                 metrics=metrics_manager.get_metrics()
@@ -246,6 +258,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                     needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
                     time_complexity=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['time_complexity'],
                     time_complexity_level=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['time_complexity_level'],
+                    space_complexity=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['space_complexity'],
+                    space_complexity_level=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['space_complexity_level'],
                     item_count=self._data.size(),
                     item_found=item,
                     metrics=metrics_manager.get_metrics()
@@ -259,6 +273,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['needs_sort'],
             time_complexity=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['search_algorithms']['JUMP_SEARCH']['space_complexity_level'],
             item_count=self._data.size(),
             item_found=None,
             metrics=metrics_manager.get_metrics()
@@ -280,6 +296,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
                 time_complexity=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['time_complexity'],
                 time_complexity_level=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['time_complexity_level'],
+                space_complexity=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['space_complexity'],
+                space_complexity_level=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['space_complexity_level'],
                 item_count=0,
                 item_found=None,
                 metrics=metrics_manager.get_metrics()
@@ -298,6 +316,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
                 time_complexity=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['time_complexity'],
                 time_complexity_level=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['time_complexity_level'],
+                space_complexity=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['space_complexity'],
+                space_complexity_level=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['space_complexity_level'],
                 item_count=self._data.size(),
                 item_found=first_item,
                 metrics=metrics_manager.get_metrics()
@@ -333,6 +353,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['needs_sort'],
             time_complexity=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['search_algorithms']['EXPONENTIAL_SEARCH']['space_complexity_level'],
             item_count=self._data.size(),
             item_found=found_result['item'] if found_result else None,
             metrics=metrics_manager.get_metrics()
@@ -375,6 +397,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
                 needs_sort=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
                 time_complexity=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['time_complexity'],
                 time_complexity_level=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['time_complexity_level'],
+                space_complexity=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['space_complexity'],
+                space_complexity_level=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['space_complexity_level'],
                 item_count=0,
                 item_found=None,
                 metrics=metrics_manager.get_metrics()
@@ -391,6 +415,8 @@ class VectorSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['needs_sort'],
             time_complexity=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['time_complexity'],
             time_complexity_level=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['time_complexity_level'],
+            space_complexity=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['space_complexity'],
+            space_complexity_level=INFO['VECTOR']['search_algorithms']['INTERPOLATION_SEARCH']['space_complexity_level'],
             item_count=self._data.size(),
             item_found=found_result['item'] if found_result else None,
             metrics=metrics_manager.get_metrics()

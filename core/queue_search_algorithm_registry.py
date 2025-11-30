@@ -62,6 +62,8 @@ class QueueSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
             time_complexity=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['time_complexity'],
             time_complexity_level=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['time_complexity_level'],
+            space_complexity=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['space_complexity'],
+            space_complexity_level=INFO['QUEUE']['search_algorithms']['LINEAR_SEARCH']['space_complexity_level'],
             item_count=item_count,
             item_found=item_found,
             metrics=metrics_manager.get_metrics()

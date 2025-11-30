@@ -9,6 +9,8 @@ class AlgorithmResult:
     item_count: int
     time_complexity: str
     time_complexity_level: str
+    space_complexity: str
+    space_complexity_level: str
     metrics: AlgorithmMetrics
 
 

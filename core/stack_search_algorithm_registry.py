@@ -71,6 +71,8 @@ class StackSearchAlgorithmRegistry(DataStructureAlgorithmRegistry):
             needs_sort=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['needs_sort'],
             time_complexity=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['time_complexity'],
             time_complexity_level=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['time_complexity_level'],
+            space_complexity=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['space_complexity'],
+            space_complexity_level=INFO['STACK']['search_algorithms']['LINEAR_SEARCH']['space_complexity_level'],
             item_found=item_found,
             item_count=self._data.size(),
             metrics=metrics_manager.get_metrics()
