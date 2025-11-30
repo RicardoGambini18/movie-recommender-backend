@@ -173,4 +173,32 @@ INFO = {
             },
         },
     },
+    'DOUBLY_LINKED_LIST': {
+        'key': 'doubly_linked_list',
+        'name': 'Lista Doblemente Enlazada',
+        'description': 'Estructura lineal donde cada nodo tiene referencias al siguiente y al anterior. Permite recorrido bidireccional y eliminación eficiente si se conoce el nodo, pero ocupa más memoria por los punteros extra.',
+        'sort_algorithms': {
+            'MERGE_SORT': {
+                'key': 'merge_sort',
+                'name': 'Ordenamiento por fusión (Merge sort)',
+                'description': 'Divide la lista en mitades recursivamente y luego las fusiona ordenadamente. Es ideal para listas enlazadas porque no requiere acceso aleatorio y es estable.',
+                'time_complexity': r'O(n\log n)',
+                'time_complexity_level': 'low',
+                'space_complexity': r'O(\log n)',
+                'space_complexity_level': 'medium'
+            },
+        },
+        'search_algorithms': {
+            'LINEAR_SEARCH': {
+                'key': 'linear_search',
+                'name': 'Búsqueda lineal (Linear search)',
+                'needs_sort': False,
+                'description': 'Recorre la lista nodo por nodo desde la cabeza hasta encontrar el elemento. Es el método estándar para estructuras no indexadas.',
+                'time_complexity': r'O(n)',
+                'time_complexity_level': 'high',
+                'space_complexity': r'O(1)',
+                'space_complexity_level': 'low'
+            },
+        },
+    },
 }

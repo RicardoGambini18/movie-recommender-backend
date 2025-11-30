@@ -156,3 +156,71 @@ class Vector(DataStructure[T]):
 
     def extend(self, other: 'Vector[T]') -> None:
         self._items.extend(other._items)
+
+
+class Node(Generic[T]):
+    def __init__(self, data: T):
+        self.data = data
+        self.prev: Node[T] | None = None
+        self.next: Node[T] | None = None
+
+    def get_data(self) -> T:
+        return self.data
+
+    def set_data(self, data: T) -> None:
+        self.data = data
+
+    def get_prev(self) -> 'Node[T] | None':
+        return self.prev
+
+    def set_prev(self, node: 'Node[T] | None') -> None:
+        self.prev = node
+
+    def get_next(self) -> 'Node[T] | None':
+        return self.next
+
+    def set_next(self, node: 'Node[T] | None') -> None:
+        self.next = node
+
+
+class DoublyLinkedList(DataStructure[T]):
+    def _build_from_list(self, data: list[T]) -> None:
+        self.head: Node[T] | None = None
+        self.tail: Node[T] | None = None
+        self._size = 0
+        for item in data:
+            self.append(item)
+
+    def append(self, item: T) -> None:
+        new_node = Node(item)
+        if self.is_empty():
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.set_prev(self.tail)
+            self.tail.set_next(new_node)
+            self.tail = new_node
+        self._size += 1
+
+    def to_list(self) -> list[T]:
+        result = []
+        current = self.head
+        while current:
+            result.append(current.get_data())
+            current = current.get_next()
+        return result
+
+    def is_empty(self) -> bool:
+        return self.head is None
+
+    def size(self) -> int:
+        return self._size
+
+    def copy(self) -> 'DoublyLinkedList[T]':
+        return DoublyLinkedList(self.to_list())
+
+    def get_head(self) -> Node[T] | None:
+        return self.head
+
+    def get_tail(self) -> Node[T] | None:
+        return self.tail
