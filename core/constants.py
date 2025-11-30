@@ -115,7 +115,7 @@ INFO = {
         'sort_algorithms': {
             'SORT_STACK': {
                 'key': 'sort_stack',
-                'name': 'Ordenamiento de Pila (Sort Stack)',
+                'name': 'Ordenamiento de pila (Sort stack)',
                 'description': 'Algoritmo iterativo que ordena una pila utilizando únicamente una pila auxiliar y operaciones push/pop/peek. Simula una inserción ordenada moviendo elementos entre las dos pilas. Respeta estrictamente la restricción LIFO.',
                 'time_complexity': r'O(n^2)',
                 'time_complexity_level': 'high',
@@ -186,6 +186,15 @@ INFO = {
                 'time_complexity_level': 'low',
                 'space_complexity': r'O(\log n)',
                 'space_complexity_level': 'medium'
+            },
+            'INSERTION_SORT': {
+                'key': 'insertion_sort',
+                'name': 'Ordenamiento por inserción (Insertion sort)',
+                'description': 'Construye la lista ordenada nodo por nodo. Es eficiente para listas pequeñas y trabaja "in-place" reajustando punteros, consumiendo mucha menos memoria que el Merge Sort.',
+                'time_complexity': r'O(n^2)',
+                'time_complexity_level': 'high',
+                'space_complexity': r'O(1)',
+                'space_complexity_level': 'low'
             },
         },
         'search_algorithms': {

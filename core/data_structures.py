@@ -222,5 +222,11 @@ class DoublyLinkedList(DataStructure[T]):
     def get_head(self) -> Node[T] | None:
         return self.head
 
+    def set_head(self, node: Node[T] | None) -> None:
+        self.head = node
+
     def get_tail(self) -> Node[T] | None:
         return self.tail
+
+    def set_tail(self, node: Node[T] | None) -> None:
+        self.tail = node
