@@ -210,4 +210,31 @@ INFO = {
             },
         },
     },
+    'BINARY_SEARCH_TREE': {
+        'key': 'binary_search_tree',
+        'name': 'Árbol Binario de Búsqueda (BST)',
+        'description': 'Estructura jerárquica donde cada nodo tiene hasta dos hijos. Para cada nodo, todos los elementos a su izquierda son menores y los de la derecha son mayores, permitiendo búsquedas muy rápidas.',
+        'search_algorithms': {
+            'DFS': {
+                'key': 'dfs',
+                'name': 'Búsqueda en Profundidad (DFS)',
+                'needs_sort': True,
+                'description': 'Explora el árbol descendiendo por las ramas. En un BST, esto equivale a una Búsqueda Binaria optimizada: en cada paso descarta la mitad del árbol comparando con el nodo actual.',
+                'time_complexity': r'O(\log n)',
+                'time_complexity_level': 'low',
+                'space_complexity': r'O(h)',
+                'space_complexity_level': 'medium'
+            },
+            'BFS': {
+                'key': 'bfs',
+                'name': 'Búsqueda en Amplitud (BFS)',
+                'needs_sort': True,
+                'description': 'Explora el árbol nivel por nivel. Utiliza una cola auxiliar para visitar primero todos los nodos de profundidad 1, luego profundidad 2, etc. Garantiza encontrar el nodo más "superficial".',
+                'time_complexity': r'O(n)',
+                'time_complexity_level': 'medium',
+                'space_complexity': r'O(w)',
+                'space_complexity_level': 'medium'
+            }
+        },
+    },
 }

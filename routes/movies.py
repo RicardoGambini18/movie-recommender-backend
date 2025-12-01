@@ -15,6 +15,7 @@ from core.vector_search_algorithm_registry import VectorSearchAlgorithmRegistry
 from core.data_structure_algorithm_registry import DataStructureAlgorithmRegistryManager
 from core.doubly_linked_list_sort_algorithm_registry import DoublyLinkedListSortAlgorithmRegistry
 from core.doubly_linked_list_search_algorithm_registry import DoublyLinkedListSearchAlgorithmRegistry
+from core.binary_search_tree_search_algorithm_registry import BinarySearchTreeSearchAlgorithmRegistry
 
 movies_bp = Blueprint('movies', __name__)
 
@@ -33,7 +34,8 @@ search_registry_manager = DataStructureAlgorithmRegistryManager(
         StackSearchAlgorithmRegistry,
         QueueSearchAlgorithmRegistry,
         VectorSearchAlgorithmRegistry,
-        DoublyLinkedListSearchAlgorithmRegistry
+        DoublyLinkedListSearchAlgorithmRegistry,
+        BinarySearchTreeSearchAlgorithmRegistry
     ]
 )
 

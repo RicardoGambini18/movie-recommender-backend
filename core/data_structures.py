@@ -1,5 +1,5 @@
-from typing import TypeVar, Generic
 from abc import ABC, abstractmethod
+from typing import Callable, TypeVar, Generic
 
 T = TypeVar('T')
 
@@ -230,3 +230,83 @@ class DoublyLinkedList(DataStructure[T]):
 
     def set_tail(self, node: Node[T] | None) -> None:
         self.tail = node
+
+
+class TreeNode(Generic[T]):
+    def __init__(self, data: T):
+        self.data = data
+        self.left: 'TreeNode[T] | None' = None
+        self.right: 'TreeNode[T] | None' = None
+
+    def get_data(self) -> T:
+        return self.data
+
+    def set_data(self, data: T) -> None:
+        self.data = data
+
+    def get_left(self) -> 'TreeNode[T] | None':
+        return self.left
+
+    def set_left(self, node: 'TreeNode[T] | None') -> None:
+        self.left = node
+
+    def get_right(self) -> 'TreeNode[T] | None':
+        return self.right
+
+    def set_right(self, node: 'TreeNode[T] | None') -> None:
+        self.right = node
+
+
+class BinarySearchTree(DataStructure[T]):
+    def __init__(self, data: list[T] = [], value_getter: Callable[[T], int] = lambda x: int(x)):
+        self.value_getter = value_getter
+        super().__init__(data)
+
+    def _build_from_list(self, data: list[T]) -> None:
+        self.root: TreeNode[T] | None = None
+        self._size = 0
+
+        if len(data) == 0:
+            return
+
+        sorted_data = sorted(data, key=self.value_getter)
+        self.root = self._build_balanced_tree(sorted_data)
+        self._size = len(data)
+
+    def _build_balanced_tree(self, items: list[T]) -> TreeNode[T] | None:
+        if len(items) == 0:
+            return None
+
+        mid = len(items) // 2
+        node = TreeNode(items[mid])
+
+        node.set_left(self._build_balanced_tree(items[:mid]))
+        node.set_right(self._build_balanced_tree(items[mid+1:]))
+
+        return node
+
+    def to_list(self) -> list[T]:
+        result = []
+        self._in_order(self.root, result)
+        return result
+
+    def _in_order(self, node: TreeNode[T] | None, result: list[T]) -> None:
+        if node is not None:
+            self._in_order(node.get_left(), result)
+            result.append(node.get_data())
+            self._in_order(node.get_right(), result)
+
+    def is_empty(self) -> bool:
+        return self.root is None
+
+    def size(self) -> int:
+        return self._size
+
+    def copy(self) -> 'BinarySearchTree[T]':
+        return BinarySearchTree(self.to_list(), value_getter=self.value_getter)
+
+    def get_root(self) -> TreeNode[T] | None:
+        return self.root
+
+    def set_root(self, node: TreeNode[T] | None) -> None:
+        self.root = node
