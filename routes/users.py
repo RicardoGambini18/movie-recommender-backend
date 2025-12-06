@@ -17,9 +17,8 @@ def get_users():
         users_data = [user.to_dict() for user in users]
         return jsonify(users_data)
     except Exception as e:
-        error_message = f"Error al obtener usuarios: {e}"
-        Logger.error(error_message)
-        return jsonify({"error": error_message}), 500
+        Logger.error(f"Error al obtener usuarios: {e}")
+        return jsonify({"error": "Error interno del servidor"}), 500
 
 
 @swag_from('../docs/users/get-user-by-id.yml')
@@ -33,9 +32,8 @@ def get_user_by_id(user_id):
 
         return jsonify(user.to_dict())
     except Exception as e:
-        error_message = f"Error al obtener usuario: {e}"
-        Logger.error(error_message)
-        return jsonify({"error": error_message}), 500
+        Logger.error(f"Error al obtener usuario: {e}")
+        return jsonify({"error": "Error interno del servidor"}), 500
 
 
 @swag_from('../docs/users/login.yaml')
@@ -45,7 +43,7 @@ def login():
         data = request.get_json()
 
         if not data:
-            return jsonify({"error": "Datos no proporcionados"}), 400
+            return jsonify({"error": "user_id y password son requeridos"}), 400
 
         user_id = data.get('user_id')
         password = data.get('password')
@@ -55,11 +53,11 @@ def login():
 
         user = User.query.get(user_id)
         if user is None:
-            return jsonify({"error": "Usuario no encontrado"}), 404
+            return jsonify({"error": "Credenciales inválidas"}), 401
 
         auth_password = Environment.AUTH_PASSWORD()
         if password != auth_password:
-            return jsonify({"error": "Contraseña incorrecta"}), 400
+            return jsonify({"error": "Credenciales inválidas"}), 401
 
         auth_secret = Environment.AUTH_SECRET()
         expiration = datetime.now(timezone.utc) + timedelta(days=30)
@@ -72,11 +70,6 @@ def login():
         token = jwt.encode(payload, auth_secret, algorithm='HS256')
 
         return jsonify({"token": token})
-    except ValueError as e:
-        error_message = str(e)
-        Logger.error(error_message)
-        return jsonify({"error": error_message}), 500
     except Exception as e:
-        error_message = f"Error al iniciar sesión: {e}"
-        Logger.error(error_message)
-        return jsonify({"error": error_message}), 500
+        Logger.error(f"Error al iniciar sesión: {e}")
+        return jsonify({"error": "Error interno del servidor"}), 500
