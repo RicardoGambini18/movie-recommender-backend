@@ -4,14 +4,15 @@ from config.logger import Logger
 from config.database import setup_db
 from routes import users_bp, movies_bp
 from config.swagger import setup_swagger
+from config.environment import Environment
 from flask import Flask, send_from_directory, abort
 from config.constants import port, debug, mode, is_flask_cli, is_gunicorn
 
 app = Flask(__name__)
 
-CORS(app)
 setup_db(app)
 setup_swagger(app)
+CORS(app, origins=[Environment.FRONTEND_URL()])
 
 api_prefix = '/api'
 app.register_blueprint(users_bp, url_prefix=api_prefix)

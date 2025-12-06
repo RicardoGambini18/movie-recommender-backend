@@ -18,6 +18,10 @@ class Environment:
         return os.environ.get('FLASK_APP')
 
     @staticmethod
+    def FRONTEND_URL():
+        return os.environ.get('FRONTEND_URL', 'http://localhost:8080')
+
+    @staticmethod
     def DATABASE_URI():
         database_url = os.environ.get('DATABASE_URI')
         if not database_url:
