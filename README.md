@@ -20,7 +20,7 @@ Al abrir la interfaz local, se debe seleccionar cualquier usuario disponible e i
 
 **Nota:** La primera ejecución puede tardar unos minutos mientras se crea el entorno virtual, se copian las variables de entorno y se descargan los recursos. Las ejecuciones posteriores serán más rápidas porque reutilizan todo lo configurado localmente. Si se desea usar otra base de datos, basta con editar el `.env` generado después de la primera ejecución.
 
-> **⚠️ Nota Importante:** Si no se necesita ejecutar la aplicación localmente, se puede utilizar la versión desplegada en **https://algolab-aed.vercel.app**.
+> **⚠️ Nota Importante:** Si no se necesita ejecutar la aplicación localmente, se puede utilizar la versión desplegada en **https://algolab-aed.up.railway.app**.
 
 ## 📊 Métricas Registradas
 
