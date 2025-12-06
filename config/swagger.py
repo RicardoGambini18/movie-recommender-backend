@@ -1,6 +1,6 @@
 from flasgger import Swagger
 from config.logger import Logger
-from config.constants import is_gunicorn, port
+from config.constants import is_gunicorn, port, app_name, app_description, app_version
 
 
 template = {
@@ -9,9 +9,9 @@ template = {
     "produces": ["application/json"],
     "consumes": ["application/json"],
     "info": {
-        "version": "1.0",
-        "title": "Algolab Python Server",
-        "description": "Algolab es un laboratorio interactivo de algoritmos y estructuras de datos que permite experimentar con distintas implementaciones, comparar su rendimiento y visualizar su comportamiento en tiempo real, incluyendo comparadores de algoritmos de búsqueda y ordenamiento. Esta es la versión Python del servidor.",
+        "title": app_name,
+        "version": app_version,
+        "description": app_description,
     },
     "securityDefinitions": {
         "Bearer": {
