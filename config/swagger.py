@@ -1,5 +1,6 @@
 from flasgger import Swagger
 from config.logger import Logger
+from config.constants import is_gunicorn, port
 
 
 template = {
@@ -24,6 +25,9 @@ template = {
 
 
 def setup_swagger(app):
+    if is_gunicorn:
+        return
+
     app.config['SWAGGER'] = {
         'uiversion': 2,
         'title': 'Documentación de la API',
@@ -31,4 +35,6 @@ def setup_swagger(app):
     }
 
     Swagger(app, template=template)
-    Logger.info('Documentación de la API configurada en /apidocs')
+
+    Logger.success(
+        f"Documentación de la API configurada correctamente. Disponible en http://localhost:{port}/apidocs")

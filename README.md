@@ -78,7 +78,6 @@ DATABASE_URI=postgresql://usuario:password@localhost:5432/algolab
 # DATABASE_URI=sqlite+pysqlite:///algolab.db
 
 # Configuración de Flask (opcionales)
-FLASK_ENV=development
 FLASK_DEBUG=1
 FLASK_RUN_PORT=8080
 
@@ -105,7 +104,7 @@ Si deseas servir la interfaz de usuario localmente, puedes compilar el proyecto 
 flask run
 ```
 
-Una vez levantado el servidor podrás acceder a la documentación Swagger en http://localhost:${FLASK_RUN_PORT}/apidos. Si la carpeta `frontend/` está presente, la raíz http://localhost:${FLASK_RUN_PORT}/ mostrará la UI (login + dashboard); de lo contrario solo se expondrán los endpoints de la API.
+Una vez levantado el servidor podrás acceder a la documentación Swagger en http://localhost:${FLASK_RUN_PORT}/apidocs. Si la carpeta `frontend/` está presente, la raíz http://localhost:${FLASK_RUN_PORT}/ mostrará la UI (login + dashboard); de lo contrario solo se expondrán los endpoints de la API.
 
 ### 🖥️ Guía rápida de la interfaz web
 
@@ -131,7 +130,7 @@ Si la carpeta `frontend/` está presente, al abrir http://localhost:${FLASK_RUN_
 **Swagger** es una interfaz interactiva que permite probar todos los endpoints directamente desde el navegador:
 
 1. **Acceder a Swagger:**
-   - Abrir http://localhost:${FLASK_RUN_PORT}/apidos en el navegador
+   - Abrir http://localhost:${FLASK_RUN_PORT}/apidocs en el navegador
    - Verás la documentación completa de todos los endpoints
 
 2. **Obtener token de acceso:**

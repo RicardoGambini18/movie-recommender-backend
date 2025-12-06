@@ -11,11 +11,11 @@ class Environment:
 
     @staticmethod
     def FLASK_RUN_PORT():
-        return int(os.environ.get('FLASK_RUN_PORT', 5000))
+        return int(os.environ.get('FLASK_RUN_PORT', 8080))
 
     @staticmethod
-    def FLASK_ENV():
-        return os.environ.get('FLASK_ENV', 'development')
+    def FLASK_APP():
+        return os.environ.get('FLASK_APP')
 
     @staticmethod
     def DATABASE_URI():
@@ -31,11 +31,11 @@ class Environment:
 
     @staticmethod
     def WARMUP_ITERATIONS():
-        return int(os.environ.get('WARMUP_ITERATIONS', 1000))
+        return int(os.environ.get('WARMUP_ITERATIONS', 500))
 
     @staticmethod
     def MOVIES_SORT_LIMIT():
-        return int(os.environ.get('MOVIES_SORT_LIMIT', 4000))
+        return int(os.environ.get('MOVIES_SORT_LIMIT', 1000))
 
     @staticmethod
     def AUTH_PASSWORD():

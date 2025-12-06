@@ -1,12 +1,11 @@
-import os
 from pathlib import Path
 from flask_cors import CORS
 from config.logger import Logger
 from config.database import setup_db
 from routes import users_bp, movies_bp
 from config.swagger import setup_swagger
-from config.environment import Environment
 from flask import Flask, send_from_directory, abort
+from config.constants import port, debug, mode, is_flask_cli, is_gunicorn
 
 app = Flask(__name__)
 
@@ -38,20 +37,15 @@ if serve_frontend:
 
         return send_from_directory(frontend_directory, 'index.html')
 
-port = Environment.FLASK_RUN_PORT()
-debug = Environment.FLASK_DEBUG() == "1"
-is_prod = Environment.FLASK_ENV() == "production"
-
-mode = "Producción" if is_prod else "Desarrollo"
-debug_state = "Activado" if debug else "Desactivado"
 
 is_main = __name__ == "__main__"
-is_flask_cli = os.environ.get("FLASK_APP") is not None
 
 if is_flask_cli or is_main:
-    Logger.info(
-        f"Iniciando servidor en modo {mode} (Debug: {debug_state}) en el puerto {port}")
-    Logger.info(f"Aplicación disponible en http://localhost:{port}")
+    Logger.success(
+        f"Servidor iniciado correctamente en modo {mode}. Disponible en http://localhost:{port}")
+elif is_gunicorn:
+    Logger.success(
+        f"Servidor iniciado correctamente en modo {mode}")
 
 if is_main:
-    app.run(debug=not is_prod, port=port)
+    app.run(debug=debug, port=port)

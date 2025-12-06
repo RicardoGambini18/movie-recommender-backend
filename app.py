@@ -211,17 +211,17 @@ def open_browser(port):
 
 
 def run_server():
-    from server import app, port, mode
+    from server import app
+    from config.constants import port, mode, debug
 
     browser_thread = threading.Thread(
         target=open_browser, args=(port,), daemon=True)
     browser_thread.start()
 
-    Logger.info(
-        f"Iniciando servidor en modo {mode} (Debug: Desactivado) en el puerto {port}")
-    Logger.info(f"Aplicación disponible en http://localhost:{port}")
+    Logger.success(
+        f"Servidor iniciado correctamente en modo {mode}. Disponible en http://localhost:{port}")
 
-    app.run(debug=False, port=port)
+    app.run(debug=debug, port=port)
 
 
 def main():
