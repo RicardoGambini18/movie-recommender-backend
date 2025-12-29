@@ -1,0 +1,2 @@
+- [ ] Agregar endpoint de metadata
+- [ ] Actualizar forntend zip id
